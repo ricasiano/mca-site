@@ -44,12 +44,12 @@ Template Name: Artist's Profile
                     <div class="album-playlist">
                     	<h3>Playlist</h3>
                         <div class="audiojs  " classname="audiojs" id="audiojs_wrapper0">
-                        	<audio preload="" src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3" autoplay="autoplay"></audio>
-                            <div class="play-pause">
+                        	<audio controls="controls" preload="" src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3" autoplay="autoplay"></audio>
+                            <!--<div class="play-pause">
                                 <p class="play"></p>
                                 <p class="pause"></p>
                                 <p class="loading"></p>
-                                <p class="error"></p
+                                <p class="error"></p>
                             </div>
                             <div class="scrubber">
                                 <div class="progress" style="width: 53.124151165402px; "></div>
@@ -59,7 +59,7 @@ Template Name: Artist's Profile
                                 <em class="played">00:47</em>/<strong class="duration">04:09</strong>
                             </div>
                             <div class="error-message"></div>
-                        </div>
+                        </div>-->
                         <ol class="album-songs">
                         	<li class="playing"><a href="#" data-src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3">dead wrong intro</a></li>
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/02-juicy-r.mp3">juicy-r</a></li>
