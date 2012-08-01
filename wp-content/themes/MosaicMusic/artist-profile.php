@@ -44,22 +44,7 @@ Template Name: Artist's Profile
                     <div class="album-playlist">
                     	<h3>Playlist</h3>
                         <div class="audiojs  " classname="audiojs" id="audiojs_wrapper0">
-                        	<audio controls="controls" preload="" src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3" autoplay="autoplay"></audio>
-                            <!--<div class="play-pause">
-                                <p class="play"></p>
-                                <p class="pause"></p>
-                                <p class="loading"></p>
-                                <p class="error"></p>
-                            </div>
-                            <div class="scrubber">
-                                <div class="progress" style="width: 53.124151165402px; "></div>
-                                <div class="loaded" style="width: 280px; "></div>
-                            </div>
-                            <div class="time">
-                                <em class="played">00:47</em>/<strong class="duration">04:09</strong>
-                            </div>
-                            <div class="error-message"></div>
-                        </div>-->
+                        	<audio preload="" src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3"></audio>
                         <ol class="album-songs">
                         	<li class="playing"><a href="#" data-src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3">dead wrong intro</a></li>
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/02-juicy-r.mp3">juicy-r</a></li>
@@ -71,7 +56,7 @@ Template Name: Artist's Profile
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/08-basic-hypnosis.mp3">basic hypnosis</a></li>
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/09-infinite-victory.mp3">infinite victory</a></li>
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">the curious incident of big poppa in the nighttime</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/11-mo-stars-mo-problems.mp3">mo stars mo problems</a></li>
+<li><a href="#" data-src="http://s3.amazonaws.com/audiojs/11-mo-stars-mo-problems.mp3">mo stars mo problems</a></li>
                         </ol>
                     </div>
                     <div class="clear"></div>
@@ -93,7 +78,7 @@ Template Name: Artist's Profile
   			jQuery('.album-songs li:nth-child(odd)').addClass('alternate');
 		});
     </script>
-
+                            
 <?php //get_sidebars(); ?>
 
 </div>
