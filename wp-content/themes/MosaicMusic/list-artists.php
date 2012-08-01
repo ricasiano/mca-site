@@ -14,6 +14,7 @@ Template Name: List Artists
 					<?php get_search_form(); ?> 
 				</div>
                 <?php } ?> 
+                <div align="center"><a href=""># A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</a></div>
                 <div class="artists-list">
                     <a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artistid=<?php //ID GOES HERE ?>">
                     <div class="img-thumb">
