@@ -2,6 +2,13 @@
 /*
 Template Name: Artist's Profile
 */
+
+//request artist profile from MyMusicStore
+$mca->endpoint = 'artistinfo';
+$mca->params = $_GET['artist_id'];
+$result = $mca->request();
+
+$artist_info = $result->artist_info;
 ?>
 <?php get_header(); ?>
 <!--<div class="outer" id="contentwrap">-->
@@ -10,7 +17,7 @@ Template Name: Artist's Profile
 			<?php 
 			$artist_id = $_GET['artistid'];
 			?>
-			<div class="artist-banner" style="background:url(<?php bloginfo('template_url'); ?>/images/artists/Akon_test.jpg) no-repeat;">
+			<div class="artist-banner" style="background:url('<?php echo $artist_info->artist_image;?>') no-repeat;">
            	</div>
             
             <div id="artist-tabs" class="artist-widget">
@@ -20,30 +27,30 @@ Template Name: Artist's Profile
                     <li><a href="#artist-photos">Photos</a></li>
                 </ul>
                 <div id="artist-info" class="tabdiv">
-                    <h3>Artist name goes here...</h3>
+                    <h3><?php echo $artist_info->artist_name;?></h3>
                     <div>
-                    	<p>After winning music fans over with his 2003 multi-platinum debut Trouble, Senegalese singer Akon returns with more stories from his personal journey via his sophomore CD Konvicted. If Trouble was Akon's ode to redemption (before his music career took off he served time for car theft), Konvicted picks up at rebirth. His mission now is to reinvent himself through his salvation - music.</p>
-
-<p>The son of accomplished jazz musician Mor Thiam, Akon was introduced to varied musical styles early on. "I grew-up listening to all kinds of music. Obviously I love soul songs, but I also like mixing in other types of music," Akon confesses. "For every Stevie Wonder track I've listened to, there is another by Steely Dan that helped shape me as an artist."</p>
+                    <?php echo $artist_info->bio;?>
                     </div>
                 </div><!--/artist-info-->
                 
                 <div id="artist-albums" class="tabdiv">
                     <div class="album-list">
+                        <?php foreach ($artist_info->albums as $key=>$val): ?>
                     	<div class="the-albums">
                         	<div class="the-album-art">
-                    			<img class="the-album-art" src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" />
+                    			<img class="the-album-art" src="<?php echo $val->album_image ;?>" />
                             </div>
                             <div class="the-album-details">
-                            	<h4>Album name</h4></audio>
+                            	<h4><?php echo $val->album_title;?></h4>
                             	<a href="<?php //LINK GOES HERE... ?>" class="click-play"></a>
                             </div>
                             <div class="clear"></div>
                         </div>
+                        <?php endforeach; ?>
                     </div>
                     <div class="album-playlist">
                     	<h3>Playlist</h3>
-                        <div class="audiojs  " classname="audiojs" id="audiojs_wrapper0">
+                        <div class="audiojs" classname="audiojs" id="audiojs_wrapper0">
                         	<audio preload="" src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3"></audio>
                         <ol class="album-songs">
                         	<li class="playing"><a href="#" data-src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3">dead wrong intro</a></li>

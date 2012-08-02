@@ -41,19 +41,28 @@ class NewSinglesWidget extends WP_Widget
       echo $before_title . $title . $after_title;;
  
     // WIDGET CODE GOES HERE
+    //initialize request for top downloads on MMS
+    $mca = new mca();
+    $mca->endpoint = 'newsingles';
+    //limit response data to 5 records
+    $mca->params = '5';
+    $result = $mca->request();
+    $new_singles = $result->new_singles;
     ?>
+    <?php foreach ($new_singles as $singles): ?>
     <div class="listing-contents">
     	<div class="list-titles">
-        	<h3>Title</h3>
-            <h4>Artist</h4>
+        	<h3><?php echo $singles->song_title;?></h3>
+            <h4><?php echo $singles->artist_name;?></h4>
         </div>
         <div class="list-options">
-         <a href="#" class="listen"></a>
+         <a href="<?php echo $singles->preview;?>" class="listen"></a>
          <a href="#" class="video-view"></a>
-         <a href="#" class="download"></a>
+         <a href="<?php echo $mca->buy_url.$mca->clean_url($singles->artist_name, true).'/'.$singles->song_id.'/'.$mca->clean_url($singles->song_title).'.html'; ?>" class="download"></a>
         </div>
         <div class="clear"></div>
-    </div>
+     </div>
+    <?php endforeach; ?>
  <?php
     echo $after_widget;
   }

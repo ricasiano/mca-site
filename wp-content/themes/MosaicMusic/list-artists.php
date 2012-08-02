@@ -2,15 +2,15 @@
 /*
 Template Name: List Artists
 */
+
+//request Artist listings from MyMusicStore
 $mca->endpoint = 'listartists';
-if(isset($_GET['initial']))
-$mca->initial = $_GET['initial'];
-if(isset($_GET['start']))
-$mca->start = $_GET['start'];
-if(isset($_GET['end']))
-$mca->end = $_GET['end'];
-$result = $mca->listArtists();
-$result = json_decode($result);
+//this will identify what the user has clicked from the artist navigation
+if(isset($_GET['prefix_string']))
+$mca->params = $_GET['prefix_string'];
+else
+$mca->params = 1;
+$result = $mca->request();
 $artist_list = $result->artists;
 ?>
 <?php get_header(); ?>
@@ -24,17 +24,17 @@ $artist_list = $result->artists;
 					<?php get_search_form(); ?> 
 				</div>
                 <?php } ?> 
-                <div align="center"><a href="<?php echo $_SERVER['SERVER_URI'].'?'.$_SERVER['QUERY_STRING'];?>&initial=1">#</a> 
+                <div align="center"><a href="<?php echo $_SERVER['SERVER_URI'].'?page_id=2&prefix_string=1';?>">#</a> 
                <?php 
                $alphabet = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'); 
-               foreach ($alphabet as $initial_list):?>
-               <a href="<?php echo $_SERVER['SERVER_URI']?>?page_id=2&initial=<?php echo strtolower($initial_list);?>"><?php echo $initial_list;?></a> 
+               foreach ($alphabet as $prefix_string):?>
+               <a href="<?php echo $_SERVER['SERVER_URI']?>?page_id=2&prefix_string=<?php echo strtolower($prefix_string);?>"><?php echo $prefix_string;?></a> 
                <?php endforeach; ?>
                 </div>
 
-                <?php foreach ($artist_list as $artist_data): ?>
+                <?php if (count($artist_list) > 0): foreach ($artist_list as $artist_data): ?>
                 <div class="artists-list">
-                    <a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artistid=<?php echo $artist_data->id ?>">
+                    <a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $artist_data->id ?>">
                     <div class="img-thumb">
                         <?php if($artist_data->image != ''):?>
                         <img src="<?php echo $artist_data->image;?>" />
@@ -47,7 +47,7 @@ $artist_list = $result->artists;
                     </div>
                     </a>
             	</div> 
-                <?php endforeach;?>
+                <?php endforeach; endif;?>
 			<?php endwhile; endif; ?>
 		<!--<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>-->
 		</div>

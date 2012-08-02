@@ -41,37 +41,27 @@ class TopAlbumsWidget extends WP_Widget
       echo $before_title . $title . $after_title;;
  
     // WIDGET CODE GOES HERE
+
+    //initialize request for top downloads on MMS
+    $mca = new mca();
+    $mca->endpoint = 'topalbums';
+    //limit response data to 4 records
+    $mca->params = '4';
+    $result = $mca->request();
+    $top_albums = $result->top_albums;
     ?>
                 <div class="new-contents light-bg">
                 	<h2 class="top-albums"></h2>
+
+                        <?php foreach ($top_albums as $albums): ?>
                     	<div class="new-album">
-                        	<a href="#">
-                                <div class="img-holder"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" /></div>
-                                <h3>Album Title</h3>
-                                <h4>Artist</h4>
+                        	<a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $albums->artist_id ?>">
+                                <div class="img-holder"><img src="<?php echo $albums->album_image;?>" /></div>
+                                <h3><?php echo $albums->album_title;?></h3>
+                                <h4><?php echo $albums->artist_name;?></h4>
                             </a>
                         </div>
-                    	<div class="new-album">
-                        	<a href="#">
-                                <div class="img-holder"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" /></div>
-                                <h3>Album Title</h3>
-                                <h4>Artist</h4>
-                            </a>
-                        </div>
-                    	<div class="new-album">
-                        	<a href="#">
-                                <div class="img-holder"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" /></div>
-                                <h3>Album Title</h3>
-                                <h4>Artist</h4>
-                            </a>
-                        </div>
-                    	<div class="new-album">
-                        	<a href="#">
-                                <div class="img-holder"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" /></div>
-                                <h3>Album Title</h3>
-                                <h4>Artist</h4>
-                            </a>
-                        </div>                     
+                        <?php endforeach;?>
                 </div>
     <?php
  

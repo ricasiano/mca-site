@@ -41,31 +41,29 @@ class TopDownloadsWidget extends WP_Widget
       echo $before_title . $title . $after_title;;
  
     // WIDGET CODE GOES HERE
-    ?>
+
+    //initialize request for top downloads on MMS
+    $mca = new mca();
+    $mca->endpoint = 'topdownloads';
+    //limit response data to 10 records
+    $mca->params = '10';
+    $result = $mca->request();
+    $top_downloads = $result->topdownloads;
+    foreach($top_downloads as $downloads): ?>
     <div class="listing-contents">
     	<div class="list-titles">
-        	<h3>Title</h3>
-            <h4>Artist</h4>
+        	<h3><?php echo $downloads->song_title;?></h3>
+            <h4><?php echo $downloads->artist_name;?></h4>
         </div>
         <div class="list-options">
-         <a href="#" class="listen"></a>
-         <a href="#" class="download"></a>
+         <a href="<?php echo $downloads->preview;?>" class="listen"></a>
+         <a href="<?php echo $mca->buy_url.$mca->clean_url($downloads->artist_name, true).'/'.$downloads->song_id.'/'.$mca->clean_url($downloads->song_title).'.html'; ?>" class="download"></a>
         </div>
         <div class="clear"></div>
     </div>
     
-    <div class="listing-contents">
-    	<div class="list-titles">
-        	<h3>Title</h3>
-            <h4>Artist</h4>
-        </div>
-        <div class="list-options">
-         <a href="#" class="listen"></a>
-         <a href="#" class="download"></a>
-        </div>
-        <div class="clear"></div>
-    </div>
  <?php
+    endforeach;
     echo $after_widget;
   }
  

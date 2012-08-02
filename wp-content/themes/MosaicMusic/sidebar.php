@@ -27,7 +27,6 @@
     	<?php
     	}
     	?>
-        
         <?php if(get_theme_option('video-artist') != '' && is_page('2')) {
     		?>
     		<div class="sidebarvideo">
