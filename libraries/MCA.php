@@ -4,7 +4,7 @@ class MCA extends APIRequest {
         $this->initial = 1;
         $this->url = 'http://test02.mymusicstore.ph/ws/index.php/store/';
         $this->client_id = '1310167525239';
-        $this->priv_key_file = '/home/rai/.ssh/1310167525239.private';
+        $this->priv_key_file = 'c:\1310167525239.private';
         $this->authorization_header = 'MCWS';
         $this->endpoint = '';
         $this->request_method = 'GET';
