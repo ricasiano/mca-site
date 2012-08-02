@@ -55,7 +55,9 @@ class LatestNewsMCAWidget extends WP_Widget
                 
                 <div class="new-contents dark-bg">
                 	<h2 class="latest-news"></h2>
-                    <?php global $post; $postslist=get_posts('category_name=news&numberposts=3&orderby=comment_count');
+                    <?php 
+					global $post;
+					$postslist=get_posts('category_name=news&numberposts=3&orderby=post_date');
 					if($postslist)
 					{ foreach($postslist as $post) : setup_postdata($post); ?>
                     	<div class="new-column">
@@ -67,7 +69,7 @@ class LatestNewsMCAWidget extends WP_Widget
                             <span class="more-about">more...</span>
                         </a>
                         </div><?php endforeach; ?>
-                     <div class="all-news"><a href="#" class="more-btn"></a></div>
+                     <div class="all-news"><a href="index.php?page_id=54" class="more-btn"></a></div>
                      <?php }//endif
 					 	else{
 							?>

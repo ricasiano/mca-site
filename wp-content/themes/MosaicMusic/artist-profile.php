@@ -24,7 +24,6 @@ $artist_info = $result->artist_info;
                 <ul class="artist-nav">
                     <li><a href="#artist-info">Info</a></li>
                     <li><a href="#artist-albums">Albums</a></li>
-                    <li><a href="#artist-photos">Photos</a></li>
                 </ul>
                 <div id="artist-info" class="tabdiv">
                     <h3><?php echo $artist_info->artist_name;?></h3>
@@ -44,7 +43,6 @@ $artist_info = $result->artist_info;
                             	<h4><?php echo $val->album_title;?></h4>
                             	<a href="<?php //LINK GOES HERE... ?>" class="click-play"></a>
                             </div>
-                            <div class="clear"></div>
                         </div>
                         <?php endforeach; ?>
                     </div>
@@ -63,20 +61,11 @@ $artist_info = $result->artist_info;
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/08-basic-hypnosis.mp3">basic hypnosis</a></li>
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/09-infinite-victory.mp3">infinite victory</a></li>
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">the curious incident of big poppa in the nighttime</a></li>
-<li><a href="#" data-src="http://s3.amazonaws.com/audiojs/11-mo-stars-mo-problems.mp3">mo stars mo problems</a></li>
+							<li><a href="#" data-src="http://s3.amazonaws.com/audiojs/11-mo-stars-mo-problems.mp3">mo stars mo problems</a></li>
                         </ol>
                     </div>
                     <div class="clear"></div>
                 </div><!--/artist-albums-->
-                
-                <div id="artist-photos" class="tabdiv">
-                    <div class="artist-photo">
-                    	<a href="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" title="Sample Image"/></a>
-                    </div>
-                    <div class="artist-photo">
-                    	<a href="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" title="Sample Image"/></a>
-                    </div>
-                </div><!--/artist-photos-->
             </div>
 		</div><!--#content-->
 	</div><!--#postcont-->
@@ -84,8 +73,7 @@ $artist_info = $result->artist_info;
     	jQuery(document).ready(function(){
   			jQuery('.album-songs li:nth-child(odd)').addClass('alternate');
 		});
-    </script>
-                            
+    </script>      
 <?php //get_sidebars(); ?>
 
 </div>
