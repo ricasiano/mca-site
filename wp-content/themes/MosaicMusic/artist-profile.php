@@ -34,7 +34,9 @@ $artist_info = $result->artist_info;
                 
                 <div id="artist-albums" class="tabdiv">
                     <div class="album-list">
-                        <?php foreach ($artist_info->albums as $key=>$val): ?>
+                        <?php 
+                        if (count($artist_info->albums) > 0):
+                        foreach ($artist_info->albums as $key=>$val): ?>
                     	<div class="the-albums">
                         	<div class="the-album-art">
                     			<img class="the-album-art" src="<?php echo $val->album_image ;?>" />
@@ -44,7 +46,8 @@ $artist_info = $result->artist_info;
                             	<a href="<?php //LINK GOES HERE... ?>" class="click-play"></a>
                             </div>
                         </div>
-                        <?php endforeach; ?>
+                        <?php endforeach;
+                        endif; ?>
                     </div>
                     <div class="album-playlist">
                     	<h3>Playlist</h3>

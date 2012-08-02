@@ -48,8 +48,6 @@ class NewSinglesWidget extends WP_Widget
     $mca->params = '5';
     $result = $mca->request();
     $new_singles = $result->new_singles;
-    ?>
-    <?php 
     if (count($new_singles) > 0):
     foreach ($new_singles as $singles): ?>
     <div class="listing-contents">

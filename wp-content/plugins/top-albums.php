@@ -53,7 +53,9 @@ class TopAlbumsWidget extends WP_Widget
                 <div class="new-contents light-bg">
                 	<h2 class="top-albums"></h2>
 
-                        <?php foreach ($top_albums as $albums): ?>
+                        <?php 
+                        if (count($top_albums) > 0):
+                        foreach ($top_albums as $albums): ?>
                     	<div class="new-album">
                         	<a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $albums->artist_id ?>">
                                 <div class="img-holder"><img src="<?php echo $albums->album_image;?>" /></div>
@@ -61,7 +63,8 @@ class TopAlbumsWidget extends WP_Widget
                                 <h4><?php echo $albums->artist_name;?></h4>
                             </a>
                         </div>
-                        <?php endforeach;?>
+                        <?php endforeach;
+                        endif; ?>
                 </div>
     <?php
  
