@@ -16,8 +16,8 @@ Template Name: Artist's Profile
             <div id="artist-tabs" class="artist-widget">
                 <ul class="artist-nav">
                     <li><a href="#artist-info">Info</a></li>
-                    <li><a href="#artist-albums">Albums</a></li>
                     <li><a href="#artist-photos">Photos</a></li>
+                    <li><a href="#artist-albums">Albums</a></li>
                 </ul>
                 <div id="artist-info" class="tabdiv">
                     <h3>Artist name goes here...</h3>
@@ -27,6 +27,15 @@ Template Name: Artist's Profile
 <p>The son of accomplished jazz musician Mor Thiam, Akon was introduced to varied musical styles early on. "I grew-up listening to all kinds of music. Obviously I love soul songs, but I also like mixing in other types of music," Akon confesses. "For every Stevie Wonder track I've listened to, there is another by Steely Dan that helped shape me as an artist."</p>
                     </div>
                 </div><!--/artist-info-->
+                
+                <div id="artist-photos" class="tabdiv">
+                    <div class="artist-photo">
+                    	<a href="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" title="Sample Image"/></a>
+                    </div>
+                    <div class="artist-photo">
+                    	<a href="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" title="Sample Image"/></a>
+                    </div>
+                </div><!--/artist-photos-->
                 
                 <div id="artist-albums" class="tabdiv">
                     <div class="album-list">
@@ -38,7 +47,6 @@ Template Name: Artist's Profile
                             	<h4>Album name</h4></audio>
                             	<a href="<?php //LINK GOES HERE... ?>" class="click-play"></a>
                             </div>
-                            <div class="clear"></div>
                         </div>
                     </div>
                     <div class="album-playlist">
@@ -56,20 +64,11 @@ Template Name: Artist's Profile
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/08-basic-hypnosis.mp3">basic hypnosis</a></li>
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/09-infinite-victory.mp3">infinite victory</a></li>
                             <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">the curious incident of big poppa in the nighttime</a></li>
-<li><a href="#" data-src="http://s3.amazonaws.com/audiojs/11-mo-stars-mo-problems.mp3">mo stars mo problems</a></li>
+							<li><a href="#" data-src="http://s3.amazonaws.com/audiojs/11-mo-stars-mo-problems.mp3">mo stars mo problems</a></li>
                         </ol>
                     </div>
                     <div class="clear"></div>
                 </div><!--/artist-albums-->
-                
-                <div id="artist-photos" class="tabdiv">
-                    <div class="artist-photo">
-                    	<a href="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" title="Sample Image"/></a>
-                    </div>
-                    <div class="artist-photo">
-                    	<a href="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" title="Sample Image"/></a>
-                    </div>
-                </div><!--/artist-photos-->
             </div>
 		</div><!--#content-->
 	</div><!--#postcont-->
@@ -77,8 +76,7 @@ Template Name: Artist's Profile
     	jQuery(document).ready(function(){
   			jQuery('.album-songs li:nth-child(odd)').addClass('alternate');
 		});
-    </script>
-                            
+    </script>      
 <?php //get_sidebars(); ?>
 
 </div>
