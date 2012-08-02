@@ -16,7 +16,6 @@ Template Name: Artist's Profile
             <div id="artist-tabs" class="artist-widget">
                 <ul class="artist-nav">
                     <li><a href="#artist-info">Info</a></li>
-                    <li><a href="#artist-photos">Photos</a></li>
                     <li><a href="#artist-albums">Albums</a></li>
                 </ul>
                 <div id="artist-info" class="tabdiv">
@@ -27,15 +26,6 @@ Template Name: Artist's Profile
 <p>The son of accomplished jazz musician Mor Thiam, Akon was introduced to varied musical styles early on. "I grew-up listening to all kinds of music. Obviously I love soul songs, but I also like mixing in other types of music," Akon confesses. "For every Stevie Wonder track I've listened to, there is another by Steely Dan that helped shape me as an artist."</p>
                     </div>
                 </div><!--/artist-info-->
-                
-                <div id="artist-photos" class="tabdiv">
-                    <div class="artist-photo">
-                    	<a href="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" title="Sample Image"/></a>
-                    </div>
-                    <div class="artist-photo">
-                    	<a href="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg"><img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" title="Sample Image"/></a>
-                    </div>
-                </div><!--/artist-photos-->
                 
                 <div id="artist-albums" class="tabdiv">
                     <div class="album-list">
