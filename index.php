@@ -14,4 +14,7 @@
 define('WP_USE_THEMES', true);
 
 /** Loads the WordPress Environment and Template */
+require('libraries/APIRequest.php');
+require('libraries/MCA.php');
+$mca = new MCA();
 require('./wp-blog-header.php');
