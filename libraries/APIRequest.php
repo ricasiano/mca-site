@@ -41,7 +41,6 @@ class APIRequest {
         $sign_string = implode("\n", $sign_data) . "\n";
         $priv_key_file = $this->priv_key_file;
         $priv_key = openssl_get_privatekey(file_get_contents($priv_key_file));
-
         openssl_sign($sign_string, $signature, $priv_key);
         $headers = array('Authorization: '.$this->authorization_header.' ' . $client_id . ':' . trim(base64_encode($signature)),
                 'Date: ' . $options['Date'],
