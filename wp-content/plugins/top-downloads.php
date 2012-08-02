@@ -49,6 +49,7 @@ class TopDownloadsWidget extends WP_Widget
     $mca->params = '10';
     $result = $mca->request();
     $top_downloads = $result->topdownloads;
+    if (count($top_downloads) > 0):
     foreach($top_downloads as $downloads): ?>
     <div class="listing-contents">
     	<div class="list-titles">
@@ -64,6 +65,7 @@ class TopDownloadsWidget extends WP_Widget
     
  <?php
     endforeach;
+    endif;
     echo $after_widget;
   }
  
