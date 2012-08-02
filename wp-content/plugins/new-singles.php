@@ -49,7 +49,9 @@ class NewSinglesWidget extends WP_Widget
     $result = $mca->request();
     $new_singles = $result->new_singles;
     ?>
-    <?php foreach ($new_singles as $singles): ?>
+    <?php 
+    if (count($new_singles) > 0):
+    foreach ($new_singles as $singles): ?>
     <div class="listing-contents">
     	<div class="list-titles">
         	<h3><?php echo $singles->song_title;?></h3>
@@ -62,7 +64,8 @@ class NewSinglesWidget extends WP_Widget
         </div>
         <div class="clear"></div>
      </div>
-    <?php endforeach; ?>
+    <?php endforeach;
+    endif; ?>
  <?php
     echo $after_widget;
   }
