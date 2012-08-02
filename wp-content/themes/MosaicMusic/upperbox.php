@@ -1,11 +1,4 @@
 <div class="log-sign">
-    <div class="thelogform">
-    <form>
-    <label for="e-mail">Email:&nbsp;</label><input id="e-mail" type="email" />
-    <label for="pword">Password:&nbsp;</label><input id="pword" type="password" />
-    <input type="image" src="<?php bloginfo('template_url'); ?>/images/submit.gif" name="login-btn" style="vertical-align:middle;"><br>
-    </form>
-    </div>
 <div style="width: 30%; padding: 0 0 0 0; text-align:right; float:right;">
 <?php if(get_theme_option('socialnetworks') != '') {
     		?>
