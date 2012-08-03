@@ -1,6 +1,4 @@
-<?php $search_text = empty($_GET['s']) ? "" : get_search_query(); ?> 
-
-    <form method="get" id="searchform" action="<?php bloginfo('home'); ?>/"> 
+<form method="get" id="searchform" action="<?php bloginfo('home'); ?>/"> 
 <div id="search">
 <img src="<?php bloginfo('template_url'); ?>/images/search_txt.gif" />
         <input type="text" value="<?php echo $search_text; ?>" 
