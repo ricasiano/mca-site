@@ -27,7 +27,6 @@ if(is_page('24')) {
 		<!--<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>-->
 		</div>
 	</div>
-	
 
 <?php get_sidebars(); ?>
 

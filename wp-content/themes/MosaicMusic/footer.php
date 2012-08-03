@@ -51,6 +51,9 @@ Fax: (800) 343-2365<br />
 </div>
 </div>
 
+    <script language="javascript" type="text/javascript">
+    jQuery('h2.pagetitle').remove();
+    </script>
 
 <div id="footer-outer">
 <div id="footer">
@@ -91,5 +94,8 @@ Fax: (800) 343-2365<br />
 	 wp_footer();
 	echo get_theme_option("footer")  . "\n";
 ?>
+    <script language="javascript" type="text/javascript">
+    jQuery('h2.pagetitle').remove();
+    </script>
 </body>
 </html>
