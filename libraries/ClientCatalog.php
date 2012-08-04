@@ -65,6 +65,9 @@ class ClientCatalog extends Database {
                 if ($row_key == 'meta_value') {
                     //parse and remove unnecessary data since json is invalid, double tsk tsk...
                     $meta_value = explode('"', $row_val);
+                    $parse_price = explode('"price"', $row_val);
+                    $price = explode('"', $parse_price[1]);
+                    $data[$result_keys]['price'] = $price[1];
                     $data[$result_keys]['image'] = $meta_value[3];
                 }
                 else
