@@ -56,7 +56,7 @@ class NewSinglesWidget extends WP_Widget
             <h4><?php echo $singles->artist_name;?></h4>
         </div>
         <div class="list-options">
-            <a class="ajax cboxElement listen" href="player.php?play_file=<?php echo $singles->preview;?>"></a>
+            <a class="ajax cboxElement listen" href="popups/player.php?play_file=<?php echo $singles->preview;?>"></a>
             <a href="<?php echo $mca->buy_url.$mca->clean_url($singles->artist_name, true).'/'.$singles->song_id.'/'.$mca->clean_url($singles->song_title).'.html'; ?>" class="download"></a>
         </div>
         <div class="clear"></div>
