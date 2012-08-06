@@ -4,7 +4,9 @@
 <script type="text/javascript" src="<?php echo CONFIG_SITE_URL;?>popups/audio-player/audio-player.js"></script>  
         <script type="text/javascript">  
             AudioPlayer.setup("<?php echo CONFIG_SITE_URL;?>popups/audio-player/player.swf", {  
-                width: 290  
+                width: 290,
+                autostart: "yes",
+                loop: "yes"
             });  
         </script>  
   
@@ -16,5 +18,3 @@
 	</script>  
     </body>  
 </html>  
-
-
