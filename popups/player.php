@@ -1,8 +1,9 @@
+<?php require ('../mainconfig.php'); ?>
 <html>
 <head><title>Audio Player</title></head>
-<script type="text/javascript" src="http://localhost/mca-universal/popups/audio-player/audio-player.js"></script>  
+<script type="text/javascript" src="<?php echo CONFIG_SITE_URL;?>popups/audio-player/audio-player.js"></script>  
         <script type="text/javascript">  
-            AudioPlayer.setup("http://localhost/mca-universal/popups/audio-player/player.swf", {  
+            AudioPlayer.setup("<?php echo CONFIG_SITE_URL;?>popups/audio-player/player.swf", {  
                 width: 290  
             });  
         </script>  
