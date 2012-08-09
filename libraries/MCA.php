@@ -6,7 +6,7 @@ class MCA extends APIRequest {
         $this->buy_url = 'http://www.mymusicstore.com.ph/music/';
         //using label id as identifier in MMS record labels since it will also be used to query items assigned for this label
         $this->client_id = '1310167525239';
-        $this->priv_key_file = '/home/rai/.ssh/1310167525239.private';
+        $this->priv_key_file = 'c:\1310167525239.private';
         $this->authorization_header = 'MCWS';
         $this->endpoint = '';
         $this->request_method = 'GET';
