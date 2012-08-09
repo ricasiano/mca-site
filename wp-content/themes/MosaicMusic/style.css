@@ -1077,7 +1077,6 @@ div.textwidget {
 	width: 100%;
 	overflow: hidden;
 	white-space:nowrap;
-	text-overflow: ellipsis;
 	}
 .details-bg h4 {
 	text-align:left;

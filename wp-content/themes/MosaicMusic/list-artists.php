@@ -52,6 +52,15 @@ $artist_list = $result->artists;
 		<!--<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>-->
 		</div>
 	</div>
+    <script>
+    jQuery('.details-bg h3').mouseover(function(){
+	if(jQuery(this)[0].scrollWidth>jQuery(this).outerWidth()){
+		var scroll = jQuery(this)[0].scrollWidth-jQuery(this).outerWidth();
+		jQuery(this).scrollLeft(0);
+		jQuery(this).animate({scrollLeft:scroll},scroll*20,'linear');
+		}
+	}).mouseout(function(){jQuery(this).scrollLeft(0);});
+	</script>
 <?php get_sidebars(); ?>
 </div>
 <?php get_footer(); ?>
