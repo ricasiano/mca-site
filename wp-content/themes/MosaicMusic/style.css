@@ -1033,6 +1033,9 @@ div.textwidget {
 .new-releases {
 	background:url(images/new1.png) no-repeat 0 0;
 	}
+.hot-releases {
+	background:url(images/opm_wnew_title.png) no-repeat 0 0;
+	}
 .top-albums {
 	background:url(images/top_album_logo.png) no-repeat 0 0;
 	}

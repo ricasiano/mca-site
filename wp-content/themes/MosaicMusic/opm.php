@@ -65,7 +65,7 @@ if(is_page('80')) { ?>
                             </div>
                         <?php endforeach;
                     endif; ?>
-                    <h2 class="new-releases"></h2>
+                    <h2 class="hot-releases"></h2>
                     <?php
                     $mca->endpoint = 'topalbums';
                     //limit response data to 5 records select with opm genre only
