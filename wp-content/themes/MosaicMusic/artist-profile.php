@@ -43,30 +43,43 @@ $artist_info = $result->artist_info;
                             </div>
                             <div class="the-album-details">
                             	<h4><?php echo $val->album_title;?></h4>
-                            	<a href="<?php //LINK GOES HERE... ?>" class="click-play"></a>
+                            	<a href="javascript:void(0)" id="play_album_<?php echo $key;?>" class="click-play"></a>
                             </div>
                         </div>
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+                                $("#play_album_<?php echo $key;?>").click(function() {
+                                    $(".album-playlist").fadeOut();
+                                    $("#album_container_<?php echo $key;?>").fadeIn();
+                                });
+                            });
+                        </script>
                         <?php endforeach;
                         endif; ?>
                     </div>
-                    <div class="album-playlist">
+                    <?php
+                        if (count($artist_info->albums) > 0):
+                        $ctr = 0;
+                        $hide = '';
+                        foreach ($artist_info->albums as $key=>$val):
+                        if ($ctr != 0)
+                        $hide = 'style="display:none"';
+                        ?>
+                    <div class="album-playlist" id="album_container_<?php echo $key;?>" <?php echo $hide;?>>
                     	<h3>Playlist</h3>
-                        <div class="audiojs" classname="audiojs" id="audiojs_wrapper0">
-                        	<audio preload="" src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3"></audio>
                         <ol class="album-songs">
-                        	<li class="playing"><a href="#" data-src="http://s3.amazonaws.com/audiojs/01-dead-wrong-intro.mp3">dead wrong intro</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/02-juicy-r.mp3">juicy-r</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/03-its-all-about-the-crystalizabeths.mp3">it's all about the crystalizabeths</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/04-islands-is-the-limit.mp3">islands is the limit</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/05-one-more-chance-for-a-heart-to-skip-a-beat.mp3">one more chance for a heart to skip a beat</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/06-suicidal-fantasy.mp3">suicidal fantasy</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/07-everyday-shelter.mp3">everyday shelter</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/08-basic-hypnosis.mp3">basic hypnosis</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/09-infinite-victory.mp3">infinite victory</a></li>
-                            <li><a href="#" data-src="http://s3.amazonaws.com/audiojs/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">the curious incident of big poppa in the nighttime</a></li>
-							<li><a href="#" data-src="http://s3.amazonaws.com/audiojs/11-mo-stars-mo-problems.mp3">mo stars mo problems</a></li>
+                            <?php if (count($val->songs) > 0):
+                            foreach ($val->songs as $song_key=>$song_val): ?>
+                            <li><a class="ajax cboxElement" href="popups/player.php?play_file=<?php echo urlencode($song_val->song_preview);?>">Play_Icon_Here</a> <?php echo $song_val->song_title;?></li>
+                            <?php endforeach;
+                            endif; ?>
                         </ol>
                     </div>
+                    <?php
+                        ++$ctr;
+                        endforeach;
+                        endif;
+                    ?>
                     <div class="clear"></div>
                 </div><!--/artist-albums-->
             </div>

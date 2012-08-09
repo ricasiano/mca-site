@@ -2,7 +2,7 @@
 class MCA extends APIRequest {
     function __construct() {
         //the url of the web service
-        $this->url = 'http://test02.mymusicstore.ph/ws/index.php/store/';
+        $this->url = 'http://localhost/mca-ws/rabbit/ws/index.php/store/';
         $this->buy_url = 'http://www.mymusicstore.com.ph/music/';
         //using label id as identifier in MMS record labels since it will also be used to query items assigned for this label
         $this->client_id = '1310167525239';

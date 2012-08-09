@@ -1,37 +1,104 @@
 <?php get_header(); ?>
 <div class="outer" id="contentwrap">
-	<div class="postcont">
-		<div id="content">
+<div class="postcont">
+<div id="content">
+<?php
+$mca->endpoint = 'searchartists';
+$mca->params = urlencode($_GET['s']).'/0/10';
+$result = $mca->request();
+$artists = $result->search_results;
+$mca->endpoint = 'searchalbums';
+$mca->params = urlencode($_GET['s']).'/0/10';
+$result = $mca->request();
+$albums = $result->search_results;
+$mca->endpoint = 'searchsongs';
+$mca->params = urlencode($_GET['s']).'/0/10';
+$result = $mca->request();
+$songs = $result->search_results;
 
-	<?php if (have_posts()) : ?>
+?>
+<br />
+<div id="topsearch">
+    <form method="get" id="searchform" action="<?php bloginfo('home'); ?>/"> 
+<div id="search">
+<img src="<?php bloginfo('template_url'); ?>/images/search_txt.gif" />
+        <input type="text" value="<?php echo $search_text; ?>" 
+            name="s" id="s"  onblur="if (this.value == '')  {this.value = '<?php echo $search_text; ?>';}"  
+            onfocus="if (this.value == '<?php echo $search_text; ?>') {this.value = '';}" />
+</div>
+<div id="search-btn">
+        <input type="image" src="<?php bloginfo('template_url'); ?>/images/go.gif" style="border:0; vertical-align: top;" /> 
+</div>
+<div class="clear"></div>
+    </form>
+    </div>
+<div id="songresults">
+<h2 class="title">Song Results:</h2>
+<?php if (count($songs) > 0):
+foreach ($songs as $my_song): ?>
+<div class="new-songs">
+<div class="img-thumb">
+<img src="<?php echo $my_song->album_image;?>">
+</div>
+<div class="details-bg">
+<h3><?php echo $my_song->song_title;?></h3>
+<h4><?php echo $my_song->artist_name;?></h4>
+<div class="options">
+<div style="display:inline;"><a class="ajax cboxElement listen" href="popups/player.php?play_file=<?php echo $my_song->preview;?>"></a></div>
+<div style="display:inline;"><a href="<?php echo $mca->buy_url.$mca->clean_url($my_song->artist_name, true).'/'.$my_song->song_id.'/'.$mca->clean_url($my_song->song_title).'.html'; ?>" class="download"></a></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<?php endforeach;
+else:
+    echo 'No song found.';
+endif; ?>
+</div>
+<div id="artistresults">
+<h2 class="title">Artist Results:</h2>
+<?php if (count($artists) > 0):
+foreach ($artists as $my_artist): ?>
 
-		<h2 class="pagetitle">Search Results</h2>
+<div class="artists-list">
+<a href="?page_id=51&amp;artist_id=<?php echo $my_artist->id;?>">
+<div class="img-thumb">
+<img src="<?php echo $my_artist->image;?>">
+<div class="details-bg">
+<h3><?php echo $my_artist->name;?></h3>
+</div>
+</div>
+</a>
+</div>
+<?php endforeach;
+else:
+    echo 'No artist found.';
+endif;?>
+</div>
+<div id="albumresults">
 
-		<?php while (have_posts()) : the_post(); ?>
+<h2 class="title">Album Results:</h2>
+<?php if (count($albums) > 0):
+foreach ($albums as $my_album): ?>
 
-			<div class="postdate"><img src="<?php bloginfo('template_url'); ?>/images/date.png" /> <?php the_time('F jS, Y') ?> <img src="<?php bloginfo('template_url'); ?>/images/folder.png" /> <?php the_category(', ') ?> <img src="<?php bloginfo('template_url'); ?>/images/comments.png" /> <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?> <?php if (current_user_can('edit_post', $post->ID)) { ?> <img src="<?php bloginfo('template_url'); ?>/images/edit.png" /> <?php edit_post_link('Edit', '', ''); } ?></div><h2 class="title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+<div class="artists-list">
+<a href="?page_id=51&amp;artist_id=<?php echo $my_album->artist_id;?>">
+<div class="img-thumb">
+<img src="<?php echo $my_album->image;?>">
+<div class="details-bg">
+<h3><?php echo $my_album->title;?></h3>
+</div>
+</div>
+</a>
+</div>
+<?php endforeach;
+else:
+    echo 'No album found.';
+endif;?>
+</pre></div>
 
-						<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-                            <?php if ( function_exists("has_post_thumbnail") && has_post_thumbnail() ) { the_post_thumbnail(array(260,200), array("class" => "alignleft post_thumbnail")); } ?>
-							<div class="entry">
-								<?php the_content('Read more &raquo;'); ?>						</div>
-						</div>
-
-		<?php endwhile; ?>
-
-		<div class="navigation">
-			<?php if (function_exists("pagination")) {
-    pagination($additional_loop->max_num_pages);
-} ?>
-		</div>
-
-	<?php else : ?>
-
-		<h2 class="pagetitle">No posts found. Try a different search?</h2>
-	<?php endif; ?>
-
-		</div>
-	</div>
+</div>
+</div>
 
 <?php get_sidebars(); ?>
 </div>
