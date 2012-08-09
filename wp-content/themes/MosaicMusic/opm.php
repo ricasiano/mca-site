@@ -11,8 +11,37 @@ $new_singles = $result->new_singles;
 ?>
 <?php get_header(); ?>
 <!--<div class="outer" id="contentwrap">-->
-	<div class="artist-postcont">
-		<div id="artist-content">	
+	<div class="postcont">
+		<div id="content">
+        <div class="new-contents light-bg">
+                	<h2 class="latest-news"></h2>
+                    <?php 
+					global $post;
+						$postslist=get_posts('category_name=opm&numberposts=3&orderby=post_date');
+					/*if(is_page(80)){
+						$postslist=get_posts('category_name=opm&numberposts=3&orderby=post_date');
+					}*/
+						
+					if($postslist)
+					{ foreach($postslist as $post) : setup_postdata($post); ?>
+                    	<div class="new-column">
+                        <a href="<?php the_permalink(); ?>">
+                        	<div class="img-holder"><?php the_post_thumbnail(array(60,60)); ?></div>
+                            <h3><?php the_title(); ?></h3>
+                            <h4><?php $excerpt = get_the_excerpt();
+  echo string_limit_words($excerpt,8);//comments_number('0 comments', 'One Comments', '% Comments' );?></h4>
+                            <span class="more-about">more...</span>
+                        </a>
+                        </div><?php endforeach; ?>
+                     <div class="all-news"><a href="index.php?page_id=78" class="more-btn"></a></div>
+                     <?php }//endif
+					 	else{
+							?>
+                            <h4 style="padding:0 0 0 15px; color:#fff;">No posts available.</h4>
+							<?php
+							}
+					  ?>
+                </div>
 
 <?php
     if (count($new_singles) > 0):
