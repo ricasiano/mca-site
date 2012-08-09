@@ -1070,10 +1070,14 @@ div.textwidget {
 	}
 .details-bg h3 {
 	text-align: left;
-	margin:5px 0 5px 10px;
+	margin:5px 0;
 	color:#fff;
 	font-size:14px;
 	font-weight: bold;
+	width: 100%;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
 	}
 .details-bg h4 {
 	text-align:left;
@@ -1289,18 +1293,29 @@ a.more-btn {
 	background-color: rgba(0,0,0,.7);
 	}
 .artists-list .details-bg h3 {text-align:center;}
+.opm-banner {
+	position:relative;
+	display: block;
+	width: 942px;
+	height: 332px; 
+	-webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);   
+	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	margin: 0 auto;
+	padding: 2px;
+	}
 .artist-banner {
 	position:relative;
 	display: block;
 	width: 940px;
-	height: 500px; 
+	height: 275px; 
 	-webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);   
 	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
 	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
 	margin: 0 0 5px 0;
 	padding: 2px;
 	}
-.artist-banner:before, .artist-banner:after 
+.artist-banner:before, .artist-banner:after, .opm-banner:before, .opm-banner:after 
 {
   z-index: -1; 
   position: absolute; 
@@ -1320,7 +1335,7 @@ a.more-btn {
   -ms-transform: rotate(-3deg);
   transform: rotate(-3deg);
 }
-.artist-banner:after 
+.artist-banner:after, .opm-banner:after 
 {
   -webkit-transform: rotate(3deg);
   -moz-transform: rotate(3deg);
@@ -1486,4 +1501,10 @@ a.more-btn {
 	width: 80px;
 	height: 80px;
 	margin: 10px;
+	}
+.cboxPlay {
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background:url(js/player-graphics.gif) no-repeat;
 	}

@@ -9,10 +9,19 @@ $mca->params = '5/opm';
 $result = $mca->request();
 $new_singles = $result->new_singles;
 ?>
-<?php get_header(); ?>
+<?php get_header(); 
+
+$get_opm_banner_image = get_theme_option('opmbanner');
+?>
+<?php
+if(is_page('80')) { ?>
+<div class="opm-banner" style="background:url('<?php echo $get_opm_banner_image; ?>') center no-repeat;">
+</div>
+	
+<?php } ?>
 <!--<div class="outer" id="contentwrap">-->
-	<div class="artist-postcont">
-		<div id="artist-content">	
+	<div class="postcont">
+		<div id="content">	
 
 <?php
     if (count($new_singles) > 0):

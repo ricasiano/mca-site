@@ -98,6 +98,12 @@ array(	"name" => "Top Banner",
 		"id" => $shortname."_topbanner",
 		"std" =>  get_bloginfo('template_url') . "/images/top-banner/STC.png",
 		"type" =>"banner_upload" ), 
+
+array(	"name" => "Opm Banner",
+		"desc" => "Enter the banner image full path or Upload your Banner for OPM Page. Leave it blank if you don't want to use a banner image. <br/>Click Upload OPM Banner > Drop or Select File > Insert into Post > Save changes",
+		"id" => $shortname."_opmbanner",
+		"std" =>  get_bloginfo('template_url') . "/images/top-banner/STC.png",
+		"type" =>"opm_upload" ), 
 		
 
 array(    "name" => "Menu Options",
@@ -536,6 +542,22 @@ function mytheme_admin() {
        </tr><tr><td colspan="2" style="margin-bottom:5px;border-bottom:1px dotted #DDDDDD;">&nbsp;</td></tr><tr><td colspan="2">&nbsp;</td></tr>
 		<?php
 		break;
+		case 'opm_upload':
+		?>
+            <tr>
+            <td width="20%" rowspan="2" valign="middle"><strong><?php echo $value['name']; ?></strong></td>
+            <td width="80%">
+			<input id="opm_banner" type="text" size="80" name="<?php echo $value['id']; ?>" value="<?php echo get_theme_settings( $value['id'] ); ?>" />
+			<input id="opm_banner_button" type="button" value="Upload OPM Banner" /><br/> 
+			<img style="margin:15px 0" src="<?php echo get_theme_settings( $value['id'] ); ?>" alt="Current Banner"/></td> 
+        </tr>
+
+       <tr>
+            <td><?php echo $value['desc']; ?></small></td>
+       </tr><tr><td colspan="2" style="margin-bottom:5px;border-bottom:1px dotted #DDDDDD;">&nbsp;</td></tr><tr><td colspan="2">&nbsp;</td></tr>
+
+		<?php
+		break;
         case "checkbox":
 		?>
             <tr>
@@ -548,7 +570,6 @@ function mytheme_admin() {
             <tr>
                 <td><?php echo $value['desc']; ?></small></td>
            </tr><tr><td colspan="2" style="margin-bottom:5px;border-bottom:1px dotted #DDDDDD;">&nbsp;</td></tr><tr><td colspan="2">&nbsp;</td></tr>
-            
 
  <?php 		break;
                  case "none":
@@ -1148,6 +1169,31 @@ if (formbanner) {
         jQuery('#upload_banner').val(imgurl);
 tb_remove();
        formbanner = '';
+
+		} else {
+			window.original_send_to_editor(html);
+		}
+};
+
+});
+
+jQuery(document).ready(function() {
+	var opmbanner;
+
+    jQuery('#opm_banner_button').click(function() {
+        opmbanner = jQuery('#opm_banner').attr('name');
+        tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
+        return false;
+    });
+
+window.original_send_to_editor = window.send_to_editor;
+    window.send_to_editor = function(html) {
+
+if (opmbanner) {
+	imgurl = jQuery(html).attr('href');
+        jQuery('#opm_banner').val(imgurl);
+tb_remove();
+       opmbanner = '';
 
 		} else {
 			window.original_send_to_editor(html);
