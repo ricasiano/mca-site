@@ -3,11 +3,11 @@
 Template Name: OPM Music
 */
 
-$mca->endpoint = 'newsingles';
+$mca->endpoint = 'newreleases';
 //limit response data to 5 records select with opm genre only
 $mca->params = '5/opm';
 $result = $mca->request();
-$new_singles = $result->new_singles;
+$new_releases = $result->new_releases;
 ?>
 <?php get_header(); 
 
@@ -22,23 +22,22 @@ if(is_page('80')) { ?>
 <!--<div class="outer" id="contentwrap">-->
 	<div class="postcont">
 		<div id="content">	
+                <div class="new-contents light-bg">
+                	<h2 class="new-releases"></h2>
 
-<?php
-    if (count($new_singles) > 0):
-    foreach ($new_singles as $singles): ?>
-    <div class="listing-contents">
-    	<div class="list-titles">
-        	<h3><?php echo $singles->song_title;?></h3>
-            <h4><?php echo $singles->artist_name;?></h4>
-        </div>
-        <div class="list-options">
-            <a class="ajax cboxElement listen" href="popups/player.php?play_file=<?php echo $singles->preview;?>"></a>
-            <a href="<?php echo $mca->buy_url.$mca->clean_url($singles->artist_name, true).'/'.$singles->song_id.'/'.$mca->clean_url($singles->song_title).'.html'; ?>" class="download"></a>
-        </div>
-        <div class="clear"></div>
-     </div>
-    <?php endforeach; 
-    endif;?>
+                        <?php 
+                        if (count($new_releases) > 0):
+                        foreach ($new_releases as $releases): ?>
+                    	<div class="new-album">
+                        	<a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $releases->artist_id ?>">
+                                <div class="img-holder"><img src="<?php echo $releases->album_image;?>" /></div>
+                                <h3><?php echo $releases->album_title;?></h3>
+                                <h4><?php echo $releases->artist_name;?></h4>
+                            </a>
+                        </div>
+                        <?php endforeach;
+                        endif; ?>
+                </div>
 		</div>
 	</div>
 <?php get_sidebars(); ?>
