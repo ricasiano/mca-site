@@ -41,39 +41,30 @@ class NewReleasesWidget extends WP_Widget
       echo $before_title . $title . $after_title;;
  
     // WIDGET CODE GOES HERE
+    //initialize request for top downloads on MMS
+    $mca = new mca();
+    $mca->endpoint = 'newreleases';
+    //limit response data to 5 records
+    $mca->params = '5';
+    $result = $mca->request();
+    $new_releases = $result->new_releases;
     ?>
-    <div class="new-contents">
-          <h2 class="new-releases"></h2>
-            <div class="new-songs">
-                <div class="img-thumb">
-                    <img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" />
+                <div class="new-contents light-bg">
+                	<h2 class="new-releases"></h2>
+
+                        <?php 
+                        if (count($new_releases) > 0):
+                        foreach ($new_releases as $releases): ?>
+                    	<div class="new-album">
+                        	<a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $releases->artist_id ?>">
+                                <div class="img-holder"><img src="<?php echo $releases->album_image;?>" /></div>
+                                <h3><?php echo $releases->album_title;?></h3>
+                                <h4><?php echo $releases->artist_name;?></h4>
+                            </a>
+                        </div>
+                        <?php endforeach;
+                        endif; ?>
                 </div>
-                <div class="details-bg">
-                    <h3>Song title</h3>
-                    <h4>Artist</h4>
-                    <div class="options">
-                        <div style="display:inline;"><a href="#" class="listen"></a></div>
-                        <div style="display:inline;"><a href="#" class="download"></a></div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-            
-            <div class="new-songs">
-                <div class="img-thumb">
-                    <img src="<?php bloginfo('template_url'); ?>/images/top_album/bornthiswaydeluxe.jpg" />
-                </div>
-                <div class="details-bg">
-                    <h3>Song title</h3>
-                    <h4>Artist</h4>
-                    <div class="options">
-                        <div style="display:inline;"><a href="#" class="listen"></a></div>
-                        <div style="display:inline;"><a href="#" class="download"></a></div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-      </div>
     <?php
  
     echo $after_widget;
