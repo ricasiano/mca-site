@@ -1098,7 +1098,7 @@ div.textwidget {
 	text-align:right;
 	width:21px;
 	height: 21px;
-	background:url(images/icon_left.png) 0 21px;
+	background:url(images/icon_left.png) 0 0;
 	}
 .video-view {
 	display: inline-block;
@@ -1112,7 +1112,14 @@ div.textwidget {
 	text-align:right;
 	width:21px;
 	height: 21px;
-	background:url(images/icon_left.png) 21px 43px;
+	background:url(images/icon_left.png) -23px 0px;
+	}
+.ringback-dl {
+	display: inline-block;
+	text-align:right;
+	width:21px;
+	height: 21px;
+	background:url(images/icon_left.png) -46px 0px;
 	}
 .new-album{
 	display:inline-block;
