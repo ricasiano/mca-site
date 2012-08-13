@@ -17,10 +17,10 @@ body {
     /*background: url("images/wrapper.jpg") repeat-x scroll 0 0 transparent;*/
 }
 #wrapper-bg {
-    /*background: url("images/wrapper-bg.jpg") no-repeat scroll center top transparent;*/
+    background: url("images/wrapper-bg-top.jpg") no-repeat scroll center top transparent;
 }
 #wrapper-bg2 {
-    /*background: url("images/wrapper-bg2.jpg") no-repeat scroll center 247px transparent;*/
+    background: url("images/wrapper-bg3.jpg") no-repeat scroll center 247px transparent;
 }
 #container {
 }
