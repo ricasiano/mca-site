@@ -11,8 +11,17 @@
         </script>  
   
     </head>  
-    <body>  
-        <p id="audioplayer_1">Now Playing...</p>  
+    <body style="font-family: verdana, arial, sans-serif; font-size: 12px">  
+	<?php if ($_GET['artist_image'] != ''): ?>
+	<img src="<?php echo str_replace('|', '.', urldecode($_GET['artist_image']));?>" />
+	<?php  
+	endif;
+	?>
+	<br />
+        <p id="audioplayer_1"></p><br />
+	<?php 
+	echo '<b>'.urldecode($_GET['song_title']).'<br /></b>';
+	echo urldecode($_GET['artist_name']); ?>
         <script type="text/javascript">  
         AudioPlayer.embed("audioplayer_1", {soundFile: "<?php echo urldecode($_GET['play_file']);?>"});  
 	</script>  
