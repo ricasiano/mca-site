@@ -54,7 +54,7 @@ class LatestNewsMCAWidget extends WP_Widget
                 <!-- latest-news -->
                 
                 <div class="new-contents dark-bg">
-                	<h2 class="latest-news"></h2>
+                	<h2>Latest News</h2>
                     <?php 
 					global $post;
 						$postslist=get_posts('category_name=news&numberposts=3&orderby=post_date');

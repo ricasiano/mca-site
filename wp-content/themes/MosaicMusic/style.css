@@ -195,6 +195,9 @@ pre {
     padding-top: 0;
     text-align: justify;
 }
+.entry ol {
+margin-left: 30px;
+}
 .navigation {
     margin: 0;
     padding: 0;
@@ -357,18 +360,19 @@ img.wp-smiley {
 .sidebarvideo {
 }
 .sidebar h2 {
-    background: url("images/h2-bg.png") no-repeat scroll 0 0 transparent;
-    /*border-bottom: 2px solid #3E4650;*/
+    /*background: url("images/h2-bg.png") no-repeat scroll 0 0 transparent;
+    border-bottom: 2px solid #3E4650;*/
     color: #FFFFFF;
     font-family: "Oswald",Arial,Sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: normal;
     line-height: 12px;
     margin: 0;
-    padding: 14px 0 15px 20px;
+    padding: 14px 0 15px 10px;
     text-align: left;
     text-transform:uppercase;
 	text-shadow:2px 2px 2px #000;
+	background: #000;
 }
 .sidebar ul {
     list-style-type: none;
@@ -664,6 +668,7 @@ img.wp-smiley {
     list-style: none outside none;
     margin: 0;
     padding: 0;
+	display:inline-block;
 }
 .navis ul {
     position: absolute;
@@ -723,6 +728,8 @@ img.wp-smiley {
     padding: 0;
     position: relative;
     z-index: 400;
+	width: 100%;
+	text-align:center;
 }
 .navi-primary {
 }
@@ -1007,27 +1014,37 @@ div.textwidget {
 .new-contents {
 	margin: 10px 0 0 0;
 	width:100%;
-	padding: 0 5px 10px 5px;
+	padding: 0 5px 10px 0;
 	display:inline-block;
 }
-.new-contents h2{
-	margin: 0;
-	padding: 0;
-	width:152px;
-	height:40px;
-	}
+
+.new-contents h2 {
+    /*background: url("images/h2-bg.png") no-repeat scroll 0 0 transparent;
+    border-bottom: 2px solid #3E4650;*/
+    color: #FFFFFF;
+    font-family: "Oswald",Arial,Sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 12px;
+    margin: 0 0 10px 0;
+    padding: 14px 0 15px 10px;
+    text-align: left;
+    text-transform:uppercase;
+	text-shadow:2px 2px 2px #000;
+	background: #000;
+}
 .light-bg {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	padding: 10px 0 0 5px;
+	padding: 10px 0 0 0;
 	background:url(images/bg_pattern_album.png) repeat-x;
 	}
 .dark-bg {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	padding: 10px 0 0 5px;
+	padding: 10px 0 0 0;
 	background:url(images/bg_pattern_news.png) repeat-x;
 	}
 .new-contents .new-column{display:inline-table;}
@@ -1181,19 +1198,21 @@ div.textwidget {
 	}
 .new-column h3 {
 	margin: 10px 0 5px 0;
-	text-align:center;
+	text-align:left;
 	color: #666;
 	font-size:12px;
 	font-weight:bold;
+	padding: 0 10px;
 	}
 .new-column h3:hover{
 	color: #999;
 	}
 .new-column h4 {
 	margin: 0 0 5px 0;
-	text-align:center;
+	text-align:left;
 	color: #fff;
 	font-size:11px;
+	padding: 0 10px;
 	}
 .new-column .more-about {
 	padding-right: 10px;

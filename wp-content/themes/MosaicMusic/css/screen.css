@@ -457,7 +457,7 @@ div.outer {background:#000;}
 }
 .outer, div.outer {
     margin: 0;
-    width: 970px;
+    width: 100%;
 }
 input.span-1, textarea.span-1, input.span-2, textarea.span-2, input.twit-rss, textarea.twit-rss, input.span-4, textarea.span-4, input.span-5, textarea.span-5, input.span-6, textarea.span-6, input.span-7, textarea.span-7, input.sidecont, textarea.sidecont, input.span-9, textarea.span-9, input.span-10, textarea.span-10, input.span-11, textarea.span-11, input.header-part, textarea.header-part, input.span-13, textarea.span-13, input.menu-links, textarea.menu-links, input.span-15, textarea.span-15, input.postcont, textarea.postcont, input.span-17, textarea.span-17, input.span-18, textarea.span-18, input.span-19, textarea.span-19, input.span-20, textarea.span-20, input.span-21, textarea.span-21, input.span-22, textarea.span-22, input.span-23, textarea.span-23, input.outer, textarea.outer {
     border-left-width: 1px !important;

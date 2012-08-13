@@ -24,7 +24,7 @@ if(is_page('80')) { ?>
 	<div class="postcont">
 		<div id="content">	
 			<div class="new-contents light-bg">
-                	<h2 class="latest-news"></h2>
+                	<h2>Latest News</h2>
                     <?php 
 					global $post;
 						$postslist=get_posts('category_name=opm&numberposts=3&orderby=post_date');
@@ -51,7 +51,7 @@ if(is_page('80')) { ?>
                 </div>
 	
                 <div class="new-contents light-bg">
-                    <h2 class="new-releases"></h2>
+                    <h2>New Releases</h2>
 
                     <?php 
                     if (count($new_releases) > 0):
@@ -65,7 +65,7 @@ if(is_page('80')) { ?>
                             </div>
                         <?php endforeach;
                     endif; ?>
-                    <h2 class="hot-releases"></h2>
+                    <h2>What's Hot?</h2>
                     <?php
                     $mca->endpoint = 'topalbums';
                     //limit response data to 5 records select with opm genre only

@@ -50,7 +50,7 @@ class NewReleasesWidget extends WP_Widget
     $new_releases = $result->new_releases;
     ?>
                 <div class="new-contents light-bg">
-                	<h2 class="new-releases"></h2>
+                	<h2>New Releases</h2>
 
                         <?php 
                         if (count($new_releases) > 0):

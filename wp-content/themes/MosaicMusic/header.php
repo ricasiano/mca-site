@@ -47,11 +47,6 @@ $(document).ready(function(){
 
 <div id="wrapper">
 <div id="wrapper-bg"><div id="wrapper-bg2">
-<div id="outer-wrapper" class="outer-wrapper">  
-<div class="outer">
-
-
-</div>
 <div id="header" class="outer">
 <div class="header-part">
 <?php
@@ -108,6 +103,9 @@ function menu_1_default()
 <?php get_search_form(); ?> 
 </div>-->
 </div>
+<div id="outer-wrapper" class="outer-wrapper">  
+<div class="outer"></div>
+
 <div class="outer" id="contentwrap">	
 <?php 
 include (TEMPLATEPATH . '/upperbox.php');

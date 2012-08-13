@@ -51,7 +51,7 @@ class TopAlbumsWidget extends WP_Widget
     $top_albums = $result->top_albums;
     ?>
                 <div class="new-contents light-bg">
-                	<h2 class="top-albums"></h2>
+                	<h2>Top Albums</h2>
 
                         <?php 
                         if (count($top_albums) > 0):
