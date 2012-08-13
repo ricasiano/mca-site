@@ -70,7 +70,7 @@ $artist_info = $result->artist_info;
                         <ol class="album-songs">
                             <?php if (count($val->songs) > 0):
                             foreach ($val->songs as $song_key=>$song_val): ?>
-                            <li><a class="ajax cboxElement cboxPlay" href="popups/player.php?play_file=<?php echo urlencode($song_val->song_preview);?>">&nbsp;</a> <?php echo $song_val->song_title;?></li>
+                            <li><a class="ajax cboxElement cboxPlay" title="Preview" href="popups/player.php?play_file=<?php echo urlencode($song_val->song_preview);?>">&nbsp;</a> <a class="ajax cboxElement cboxDL" title="Download" href="popups/player.php?play_file=<?php echo urlencode($song_val->song_preview);?>">&nbsp;</a><?php echo $song_val->song_title;?></li>
                             <?php endforeach;
                             endif; ?>
                         </ol>
