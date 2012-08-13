@@ -12,6 +12,7 @@
   
     </head>  
     <body style="font-family: verdana, arial, sans-serif; font-size: 12px">  
+	<div align="center">
 	<?php if ($_GET['artist_image'] != ''): ?>
 	<img src="<?php echo str_replace('|', '.', urldecode($_GET['artist_image']));?>" />
 	<?php  
@@ -25,5 +26,6 @@
         <script type="text/javascript">  
         AudioPlayer.embed("audioplayer_1", {soundFile: "<?php echo urldecode($_GET['play_file']);?>"});  
 	</script>  
+	</div>
     </body>  
 </html>  
