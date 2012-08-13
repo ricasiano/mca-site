@@ -57,8 +57,8 @@ class TopDownloadsWidget extends WP_Widget
             <h4><?php echo $downloads->artist_name;?></h4>
         </div>
         <div class="list-options">
-        <a class="ajax cboxElement listen" href="popups/player.php?play_file=<?php echo urlencode($downloads->preview);?>"></a>
-        <a href="<?php echo $mca->buy_url.$mca->clean_url($downloads->artist_name, true).'/'.$downloads->song_id.'/'.$mca->clean_url($downloads->song_title).'.html'; ?>" class="download"></a>
+        <a class="ajax cboxElement listen iframe" href="<?php echo CONFIG_SITE_URL;?>popups/player.php?play_file=<?php echo urlencode($downloads->preview);?>&artist_image=<?php echo urlencode(str_replace('.', '|', $downloads->artist_image)); ?>&song_title=<?php echo urlencode($downloads->song_title);?>&artist_name=<?php echo urlencode($downloads->artist_name);?>"></a>
+        <a href="<?php echo $mca->buy_url.$mca->clean_url($downloads->artist_name, true).'/'.$downloads->song_id.'/'.$mca->clean_url($downloads->song_title).'.html'; ?>" class="download" target="_blank"></a>
         </div>
         <div class="clear"></div>
     </div>

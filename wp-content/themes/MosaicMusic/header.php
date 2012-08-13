@@ -30,7 +30,7 @@
 $(document).ready(function(){
         $(".ajax").colorbox();
         $(".youtube").colorbox({iframe:true, innerWidth:425, innerHeight:344});
-        $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+        $(".iframe").colorbox({iframe:true, width:350, height:420, scrolling: false});
         $(".inline").colorbox({inline:true, width:"50%"});
         //Example of preserving a JavaScript event for inline calls.
         $("#click").click(function(){ 

@@ -68,9 +68,13 @@ $artist_info = $result->artist_info;
                     <div class="album-playlist" id="album_container_<?php echo $key;?>" <?php echo $hide;?>>
                     	<h3>Playlist</h3>
                         <ol class="album-songs">
-                            <?php if (count($val->songs) > 0):
+                            <?php 
+			if (count($val->songs) > 0):
                             foreach ($val->songs as $song_key=>$song_val): ?>
-                            <li><a class="ajax cboxElement cboxPlay" title="Preview" href="popups/player.php?play_file=<?php echo urlencode($song_val->song_preview);?>">&nbsp;</a> <a class="ajax cboxElement cboxDL" title="Download" href="popups/player.php?play_file=<?php echo urlencode($song_val->song_preview);?>">&nbsp;</a><?php echo $song_val->song_title;?></li>
+                            <li>
+	    <a class="ajax cboxElement cboxPlay iframe" href="<?php echo CONFIG_SITE_URL;?>popups/player.php?play_file=<?php echo urlencode($song_val->song_preview);?>&artist_image=<?php echo urlencode(str_replace('.', '|', $artist_info->artist_image)); ?>&song_title=<?php echo urlencode($song_val->song_title);?>&artist_name=<?php echo urlencode($artist_info->artist_name);?>"></a>
+        <a href="<?php echo $mca->buy_url.$mca->clean_url($artist_info->artist_name, true).'/'.$song_key.'/'.$mca->clean_url($song_val->song_title).'.html'; ?>" class="cboxDL" target="_blank"></a>
+<?php echo $song_val->song_title;?></li>
                             <?php endforeach;
                             endif; ?>
                         </ol>
