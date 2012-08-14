@@ -97,7 +97,13 @@ array(	"name" => "Top Banner",
 		"desc" => "Enter the banner image full path or Upload your Banner. Leave it blank if you don't want to use a banner image. <br/>Click Upload Banner > Drop or Select File > Insert into Post > Save changes",
 		"id" => $shortname."_topbanner",
 		"std" =>  get_bloginfo('template_url') . "/images/top-banner/STC.png",
-		"type" =>"banner_upload" ), 
+		"type" =>"banner_upload", ), 
+		
+array(	"name" => "Top Banner URL",
+		"desc" => "Enter a URL link for this banner. Example: http://www.mcauniversal.com.ph/</b>.",
+		"id" => $shortname."_topbanner-url",
+		"std" =>  '/beta',
+		"type" => "text"),
 
 array(	"name" => "Opm Banner",
 		"desc" => "Enter the banner image full path or Upload your Banner for OPM Page. Leave it blank if you don't want to use a banner image. <br/>Click Upload OPM Banner > Drop or Select File > Insert into Post > Save changes",
@@ -137,7 +143,7 @@ array(	"name" => "Popular Posts Enabled?",
         "type" => "textarea"	
 		),
 		
-	array(	"name" => "Footer Scrip(s)",
+	array(	"name" => "Footer Script(s)",
 		"desc" => "The content of this box will be added immediately before &lt;/body&gt; tag. Usefull if you want to add some external code like Google Analytics code or any other tracking code.",
         "id" => $shortname."_footer",
         "type" => "textarea"	
@@ -529,17 +535,21 @@ function mytheme_admin() {
 		
 		case 'banner_upload':
 		?>
-            <tr>
+        <tr>
             <td width="20%" rowspan="2" valign="middle"><strong><?php echo $value['name']; ?></strong></td>
             <td width="80%">
 			<input id="upload_banner" type="text" size="80" name="<?php echo $value['id']; ?>" value="<?php echo get_theme_settings( $value['id'] ); ?>" />
 			<input id="upload_banner_button" type="button" value="Upload Banner" /><br/> 
 			<img style="margin:15px 0" src="<?php echo get_theme_settings( $value['id'] ); ?>" alt="Current Banner"/></td> 
-        </tr>
+       </tr>
 
        <tr>
             <td><?php echo $value['desc']; ?></small></td>
-       </tr><tr><td colspan="2" style="margin-bottom:5px;border-bottom:1px dotted #DDDDDD;">&nbsp;</td></tr><tr><td colspan="2">&nbsp;</td></tr>
+       </tr>
+       <tr>
+       		<td></td>
+       </tr>
+       <tr><td colspan="2" style="margin-bottom:5px;border-bottom:1px dotted #DDDDDD;">&nbsp;</td></tr><tr><td colspan="2">&nbsp;</td></tr>
 		<?php
 		break;
 		case 'opm_upload':
