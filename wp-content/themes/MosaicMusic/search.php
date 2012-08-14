@@ -44,7 +44,7 @@ foreach ($songs as $my_song): ?>
 <h3><?php echo $my_song->song_title;?></h3>
 <h4><?php echo $my_song->artist_name;?></h4>
 <div class="options">
-<div style="display:inline;"><a class="ajax cboxElement listen" href="popups/player.php?play_file=<?php echo $my_song->preview;?>"></a></div>
+<div style="display:inline;"><a class="ajax cboxElement listen iframe" href="<?php echo CONFIG_SITE_URL;?>popups/player.php?play_file=<?php echo urlencode($my_song->preview);?>&artist_image=<?php echo urlencode(str_replace('.', '|', $my_song->album_image)); ?>&song_title=<?php echo urlencode($my_song->song_title);?>&artist_name=<?php echo urlencode($my_song->artist_name);?>"></a></div>
 <div style="display:inline;"><a href="<?php echo $mca->buy_url.$mca->clean_url($my_song->artist_name, true).'/'.$my_song->song_id.'/'.$mca->clean_url($my_song->song_title).'.html'; ?>" class="download"></a></div>
 </div>
 </div>
