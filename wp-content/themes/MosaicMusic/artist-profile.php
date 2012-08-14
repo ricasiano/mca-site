@@ -22,15 +22,9 @@ $artist_info = $result->artist_info;
             
             <div id="artist-tabs" class="artist-widget">
                 <ul class="artist-nav">
-                    <li><a href="#artist-info">Info</a></li>
                     <li><a href="#artist-albums">Albums</a></li>
+                    <li><a href="#artist-info">Info</a></li>
                 </ul>
-                <div id="artist-info" class="tabdiv">
-                    <h3><?php echo $artist_info->artist_name;?></h3>
-                    <div>
-                    <?php echo $artist_info->bio;?>
-                    </div>
-                </div><!--/artist-info-->
                 
                 <div id="artist-albums" class="tabdiv">
                     <div class="album-list">
@@ -86,6 +80,14 @@ $artist_info = $result->artist_info;
                     ?>
                     <div class="clear"></div>
                 </div><!--/artist-albums-->
+                
+                
+                <div id="artist-info" class="tabdiv">
+                    <h3><?php echo $artist_info->artist_name;?></h3>
+                    <div>
+                    <?php echo $artist_info->bio;?>
+                    </div>
+                </div><!--/artist-info-->
             </div>
 		</div><!--#content-->
 	</div><!--#postcont-->

@@ -52,6 +52,7 @@ $(document).ready(function(){
 <?php
 $get_logo_image = get_theme_option('logo');
 $get_banner_image = get_theme_option('topbanner');
+$get_banner_url = get_theme_option('topbanner-url');
 if($get_logo_image != '') {
     ?>
         <a href="<?php bloginfo('url'); ?>"><img src="<?php echo $get_logo_image; ?>" alt="<?php bloginfo('name'); ?>" title="<?php bloginfo('name'); ?>" class="logoimg" /></a>
@@ -69,7 +70,7 @@ if($get_logo_image != '') {
 <div class="header-part rightsector">
 <div style="padding: 0 0 0 0; text-align:right;">
 
-<a href="<?php bloginfo('url'); ?>"><img src="<?php echo $get_banner_image; ?>" alt="<?php bloginfo('name'); ?>" title="<?php bloginfo('name'); ?>"/></a>
+<a href="<?php echo $get_banner_url; ?>"><img src="<?php echo $get_banner_image; ?>" alt="<?php bloginfo('name'); ?>" title="<?php bloginfo('name'); ?>"/></a>
 
 </div>
 </div>
