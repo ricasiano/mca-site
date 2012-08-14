@@ -15,9 +15,14 @@ $artist_list = $result->artists;
 ?>
 <?php get_header(); ?>
 <!--<div class="outer" id="contentwrap">-->
+	<div class="postcont">
+		<div id="content">
+			<h2 class="title"><?php the_title(); ?></h2>
+        </div>
+    </div>
+<?php get_sidebars(); ?>
 	<div class="artist-postcont">
-		<div id="artist-content">	
-
+		<div id="artist-content">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <?php if (is_page('24')) { ?>
 				<div id="topsearch">
@@ -61,6 +66,5 @@ $artist_list = $result->artists;
 		}
 	}).mouseout(function(){jQuery(this).scrollLeft(0);});
 	</script>
-<?php get_sidebars(); ?>
 </div>
 <?php get_footer(); ?>
