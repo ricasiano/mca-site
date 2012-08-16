@@ -29,7 +29,7 @@ $artist_list = $result->artists;
 					<?php get_search_form(); ?> 
 				</div>
                 <?php } ?> 
-                <div align="center"><a href="<?php echo $_SERVER['SERVER_URI'].'?page_id=2&prefix_string=1';?>">#</a> 
+                <div class="filter-agent"><a href="<?php echo $_SERVER['SERVER_URI'].'?page_id=2&prefix_string=1';?>">#</a> 
                <?php 
                $alphabet = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'); 
                foreach ($alphabet as $prefix_string):?>
