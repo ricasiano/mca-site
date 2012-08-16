@@ -43,29 +43,72 @@ class NewSinglesWidget extends WP_Widget
     // WIDGET CODE GOES HERE
     //initialize request for top downloads on MMS
     $mca = new mca();
-    $mca->endpoint = 'newsingles';
-    //limit response data to 5 records
-    $mca->params = '5';
-    $result = $mca->request();
-    $new_singles = $result->new_singles;
-    if (count($new_singles) > 0):
-    foreach ($new_singles as $singles): ?>
-    <div class="listing-contents">
-    	<div class="list-titles">
-        	<h3><?php echo $singles->song_title;?></h3>
-            <h4><?php echo $singles->artist_name;?></h4>
-        </div>
-        <div class="list-options">
+    $local_data = new LocalData();
+    if($local_data->loc_new_singles == 1):
+        $songs = $local_data->get_data('loc_song', 'new_single');
+        $mca->endpoint = 'songs';
+        $mca->params = $songs.'/20';
+        $result = $mca->request();
+        $new_singles = $result->songs;
+        if (count($new_singles) > 0):
+            foreach ($new_singles as $singles): 
+                $smart_rbt_keyword = '';
+                $globe_rbt_keyword = '';
+                $sun_rbt_keyword = '';
+                $rbt = $local_data->get_all_data('loc_song', 'id', $singles->id);
+                if (count($rbt)>0):
+                    $smart_rbt_keyword = $rbt[0]['smart_rbt_keyword'];
+                    $globe_rbt_keyword = $rbt[0]['globe_rbt_keyword'];
+                    $sun_rbt_keyword = $rbt[0]['sun_rbt_keyword'];
+                endif;
+                ?>
+                <div class="listing-contents">
+                    <div class="list-titles">
+                        <h3><?php echo $singles->title;?></h3>
+                        <h4><?php echo $singles->artist_name;?></h4>
+                    </div>
+                    <div class="list-options">
+                    <a class="ajax cboxElement listen iframe" href="<?php echo CONFIG_SITE_URL;?>popups/player.php?play_file=<?php echo urlencode($singles->preview);?>&artist_image=<?php echo urlencode(str_replace('.', '|', $singles->artist_image)); ?>&song_title=<?php echo urlencode($singles->title);?>&artist_name=<?php echo urlencode($singles->artist_name);?>"></a>
+                        <a title="Download MP3" target="_blank" href="<?php echo $mca->buy_url.$mca->clean_url($singles->artist_name, true).'/'.$singles->id.'/'.$mca->clean_url($singles->title).'.html'; ?>" class="download"></a>
+                        <a class="ajax cboxElement ringback-dl iframe" href="<?php echo CONFIG_SITE_URL;?>popups/rbt.php?&artist_image=<?php echo urlencode(str_replace('.', '|', $singles->artist_image)); ?>&song_title=<?php echo urlencode($singles->title);?>&artist_name=<?php echo urlencode($singles->artist_name);?>&rbt_globe=<?php echo $globe_rbt_keyword;?>&rbt_smart=<?php echo $smart_rbt_keyword;?>&rbt_sun=<?php echo $sun_rbt_keyword;?>"></a>
+                    </div>
+                    <div class="clear"></div>
+                 </div>
+            <?php endforeach;
+        endif; 
+    else:
+        $mca->endpoint = 'newsingles';
+        //limit response data to 20 records
+        $mca->params = '20';
+        $result = $mca->request();
+        $new_singles = $result->new_singles;
+        if (count($new_singles) > 0):
+            foreach ($new_singles as $singles): 
+                $smart_rbt_keyword = '';
+                $globe_rbt_keyword = '';
+                $sun_rbt_keyword = '';
+                $rbt = $local_data->get_all_data('loc_song', 'id', $singles->id);
+                if (count($rbt)>0):
+                    $smart_rbt_keyword = $rbt[0]['smart_rbt_keyword'];
+                    $globe_rbt_keyword = $rbt[0]['globe_rbt_keyword'];
+                    $sun_rbt_keyword = $rbt[0]['sun_rbt_keyword'];
+                endif;
+                ?>
+                <div class="listing-contents">
+                    <div class="list-titles">
+                        <h3><?php echo $singles->song_title;?></h3>
+                        <h4><?php echo $singles->artist_name;?></h4>
+                    </div>
+                    <div class="list-options">
 
-	    <a class="ajax cboxElement listen iframe" href="<?php echo CONFIG_SITE_URL;?>popups/player.php?play_file=<?php echo urlencode($singles->preview);?>&artist_image=<?php echo urlencode(str_replace('.', '|', $singles->artist_image)); ?>&song_title=<?php echo urlencode($singles->song_title);?>&artist_name=<?php echo urlencode($singles->artist_name);?>"></a>
-            <a title="Download MP3" target="_blank" href="<?php echo $mca->buy_url.$mca->clean_url($singles->artist_name, true).'/'.$singles->song_id.'/'.$mca->clean_url($singles->song_title).'.html'; ?>" class="download"></a>
-            <a title="Caller Ringback" href="#" class="ringback-dl"></a>
-        </div>
-        <div class="clear"></div>
-     </div>
-    <?php endforeach;
-    endif; ?>
- <?php
+                    <a class="ajax cboxElement listen iframe" href="<?php echo CONFIG_SITE_URL;?>popups/player.php?play_file=<?php echo urlencode($singles->preview);?>&artist_image=<?php echo urlencode(str_replace('.', '|', $singles->artist_image)); ?>&song_title=<?php echo urlencode($singles->song_title);?>&artist_name=<?php echo urlencode($singles->artist_name);?>"></a>
+                        <a title="Download MP3" target="_blank" href="<?php echo $mca->buy_url.$mca->clean_url($singles->artist_name, true).'/'.$singles->song_id.'/'.$mca->clean_url($singles->song_title).'.html'; ?>" class="download"></a>
+                        <a class="ajax cboxElement ringback-dl iframe" href="<?php echo CONFIG_SITE_URL;?>popups/rbt.php?&artist_image=<?php echo urlencode(str_replace('.', '|', $singles->artist_image)); ?>&song_title=<?php echo urlencode($singles->title);?>&artist_name=<?php echo urlencode($singles->artist_name);?>&rbt_globe=<?php echo $globe_rbt_keyword;?>&rbt_smart=<?php echo $smart_rbt_keyword;?>&rbt_sun=<?php echo $sun_rbt_keyword;?>"></a>                    </div>
+                    <div class="clear"></div>
+                 </div>
+            <?php endforeach;
+        endif; 
+    endif;
     echo $after_widget;
   }
  

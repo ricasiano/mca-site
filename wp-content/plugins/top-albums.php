@@ -45,6 +45,37 @@ class TopAlbumsWidget extends WP_Widget
     //initialize request for top downloads on MMS
     $mca = new mca();
     $mca->endpoint = 'topalbums';
+    $local_data = new LocalData();
+    if($local_data->loc_top_albums == 1):
+    $albums = $local_data->get_data('loc_album', 'top_album');
+    $mca->endpoint = 'albums';
+    $mca->params = $albums.'/4';
+    $result = $mca->request();
+    $top_albums = $result->albums;
+    ?>
+                <div class="new-contents light-bg">
+                	<h2>Top Albums</h2>
+
+                        <?php 
+                        if (count($top_albums) > 0):
+                        foreach ($top_albums as $albums): 
+                        if (isset($albums->id)):?>
+                    	<div class="new-album">
+                        	<a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $albums->id ?>">
+                                <div class="img-holder"><img src="<?php echo $albums->image;?>" /></div>
+                                <h3><?php echo $albums->title;?></h3>
+                                <h4><?php echo $albums->albumartist;?></h4>
+                            </a>
+                        </div>
+                        <?php 
+                        endif;
+                        endforeach;
+                        endif; ?>
+                </div>
+    <?php
+
+
+    else:
     //limit response data to 4 records
     $mca->params = '4';
     $result = $mca->request();
@@ -67,7 +98,7 @@ class TopAlbumsWidget extends WP_Widget
                         endif; ?>
                 </div>
     <?php
- 
+    endif;
     echo $after_widget;
   }
  

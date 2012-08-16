@@ -1,0 +1,68 @@
+.mms_navigation {
+    text-decoration: none;
+    font-weight: bold;
+}
+.mms_table {
+    width: 80%;
+    padding: 0px;
+    border-top: 1px solid #ddd;
+}
+.mms_th {
+    border-bottom; 1px solid #ddd;
+    background-color: #bbb;
+    color: #fff;
+}
+.mms_td {
+    border-bottom: #ddd;
+}
+.mms_td_alt {
+    border-bottom: #ddd;
+    background-color: #f0eeef;
+}
+.mms_image {
+    max-width: 100px;
+    border: 0;
+}
+.mms_textarea{
+    border: 1px solid #ccc;
+}
+.mms_anchor{
+    text-decoration: none;
+}
+
+.mms_album_table {
+    width: 96%;
+    padding: 0px;
+    border: 1px solid #333;
+}
+.mms_album_th {
+    border-bottom; 1px solid #333;
+    background-color: #333;
+    color: #fff;
+}
+.mms_album_td {
+    border-bottom: #333;
+    background-color: #fff;
+}
+.mms_checkbox {
+    border: 1px solid #333;
+}
+.mms_settings_container{
+    padding: 5px;
+    border: 1px solid #999;
+    background-color: #eee;
+    width: 80%;
+}
+.mms_label{
+    padding-top: 4px;
+    vertical-align: middle;
+}
+.mms_save_settings{
+    padding: 10px;
+    width: 80%;
+    border: 1px solid green;
+    background-color: #fff;
+}
+.mms_rbt{
+    width: 90px;
+}

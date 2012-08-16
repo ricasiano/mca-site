@@ -15,6 +15,12 @@ class Database {
         mysql_connect($this->host, $this->username, $this->password) or die('DB Connection error');
         mysql_select_db($this->database_name) or die('Invalid database selected');
     }
+
+    public function save($sql) {
+        $this->connect();
+        $result = mysql_query($sql) or die(mysql_error());
+        mysql_close();
+    }
     public function query($sql) {
         $this->connect();
         $result = mysql_query($sql) or die(mysql_error());

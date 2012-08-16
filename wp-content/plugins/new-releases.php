@@ -43,30 +43,58 @@ class NewReleasesWidget extends WP_Widget
     // WIDGET CODE GOES HERE
     //initialize request for top downloads on MMS
     $mca = new mca();
-    $mca->endpoint = 'newreleases';
-    //limit response data to 5 records
-    $mca->params = '5';
-    $result = $mca->request();
-    $new_releases = $result->new_releases;
-    ?>
-                <div class="new-contents light-bg">
-                	<h2>New Releases</h2>
+    $local_data = new LocalData();
+    if($local_data->loc_new_releases == 1):
+        $albums = $local_data->get_data('loc_album', 'new_release');
+        $mca->endpoint = 'albums';
+        $mca->params = $albums.'/20';
+        $result = $mca->request();
+        $new_releases = $result->albums;
+        ?>
+                    <div class="new-contents light-bg">
+                        <h2>New Releases</h2>
+                            <?php 
+                            if (count($new_releases) > 0):
+                            foreach ($new_releases as $releases):
+                            if (isset($releases->artist)): ?>
+                            <div class="new-album">
+                                <a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $releases->artist ?>">
+                                    <div class="img-holder"><img src="<?php echo $releases->image;?>" /></div>
+                                    <h3><?php echo $releases->title;?></h3>
+                                    <h4><?php echo $releases->albumartist;?></h4>
+                                </a>
+                            </div>
+                            <?php 
+                            endif;
+                            endforeach;
+                            endif; ?>
+                    </div>
+        <?php
+    else:
+        $mca->endpoint = 'newreleases';
+        //limit response data to 4 records
+        $mca->params = '20';
+        $result = $mca->request();
+        $new_releases = $result->new_releases;
+        ?>
+                    <div class="new-contents light-bg">
+                        <h2>New Releases</h2>
 
-                        <?php 
-                        if (count($new_releases) > 0):
-                        foreach ($new_releases as $releases): ?>
-                    	<div class="new-album">
-                        	<a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $releases->artist_id ?>">
-                                <div class="img-holder"><img src="<?php echo $releases->album_image;?>" /></div>
-                                <h3><?php echo $releases->album_title;?></h3>
-                                <h4><?php echo $releases->artist_name;?></h4>
-                            </a>
-                        </div>
-                        <?php endforeach;
-                        endif; ?>
-                </div>
-    <?php
- 
+                            <?php 
+                            if (count($new_releases) > 0):
+                            foreach ($new_releases as $releases): ?>
+                            <div class="new-album">
+                                <a href="<?php echo $SERVER['REQUEST_URI']; ?>?page_id=51&artist_id=<?php echo $releases->artist_id ?>">
+                                    <div class="img-holder"><img src="<?php echo $releases->album_image;?>" /></div>
+                                    <h3><?php echo $releases->album_title;?></h3>
+                                    <h4><?php echo $releases->artist_name;?></h4>
+                                </a>
+                            </div>
+                            <?php endforeach;
+                            endif; ?>
+                    </div>
+        <?php
+    endif; 
     echo $after_widget;
   }
  

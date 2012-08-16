@@ -9,6 +9,11 @@ $mca->params = $_GET['artist_id'];
 $result = $mca->request();
 
 $artist_info = $result->artist_info;
+if ($artist_info->bio == '') {
+    $info = $local_data->get_data('loc_artist', 'id', 'bio', $_GET['artist_id']);
+    $artist_info->bio = nl2br($info);
+}
+
 ?>
 <?php get_header(); ?>
 <!--<div class="outer" id="contentwrap">-->

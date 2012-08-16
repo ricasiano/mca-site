@@ -44,6 +44,31 @@ class TopDownloadsWidget extends WP_Widget
 
     //initialize request for top downloads on MMS
     $mca = new mca();
+
+    $local_data = new LocalData();
+    if($local_data->loc_top_downloads == 1):
+        $songs = $local_data->get_data('loc_song', 'top_download');
+        $mca->endpoint = 'songs';
+        $mca->params = $songs.'/20';
+        $result = $mca->request();
+        $top_downloads = $result->songs;
+        if (count($top_downloads) > 0):
+            foreach($top_downloads as $downloads): ?>
+                <div class="listing-contents">
+                    <div class="list-titles">
+                        <h3><?php echo $downloads->title;?></h3>
+                        <h4><?php echo $downloads->artist_name;?></h4>
+                    </div>
+                    <div class="list-options">
+                    <a class="ajax cboxElement listen iframe" href="<?php echo CONFIG_SITE_URL;?>popups/player.php?play_file=<?php echo urlencode($downloads->preview);?>&artist_image=<?php echo urlencode(str_replace('.', '|', $downloads->artist_image)); ?>&song_title=<?php echo urlencode($downloads->song_title);?>&artist_name=<?php echo urlencode($downloads->artist_name);?>"></a>
+                    <a href="<?php echo $mca->buy_url.$mca->clean_url($downloads->artist_name, true).'/'.$downloads->id.'/'.$mca->clean_url($downloads->title).'.html'; ?>" class="download" target="_blank"></a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <?php
+            endforeach;
+        endif;
+    else:
     $mca->endpoint = 'topdownloads';
     //limit response data to 10 records
     $mca->params = '10';
@@ -65,6 +90,7 @@ class TopDownloadsWidget extends WP_Widget
     
  <?php
     endforeach;
+    endif;
     endif;
     echo $after_widget;
   }

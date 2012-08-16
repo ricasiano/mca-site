@@ -21,12 +21,14 @@ require('libraries/Database.php');
 require('libraries/APIRequest.php');
 require('libraries/MCA.php');
 require('libraries/ClientCatalog.php');
+require('libraries/LocalData.php');
+
 $mca = new MCA();
 $client_catalog = new ClientCatalog();
 $client_catalog->host = CONFIG_DATABASE_HOST;
 $client_catalog->username = CONFIG_DATABASE_USER;
 $client_catalog->password = CONFIG_DATABASE_PASSWORD;
 $client_catalog->database_name = CONFIG_DATABASE_NAME;
-
+$local_data = new LocalData();
 /** Loads the WordPress Environment and Template */
 require('./wp-blog-header.php');
