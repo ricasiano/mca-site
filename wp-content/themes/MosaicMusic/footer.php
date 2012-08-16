@@ -80,7 +80,8 @@ Fax: (800) 343-2365<br />
                     
                 ?>
     </div>
-    <div class="clear">Copyright &copy; <a href="<?php bloginfo('home'); ?>"><strong><?php bloginfo('name'); ?></strong></a>  - <?php bloginfo('description'); ?> - Powered by <a href="http://wordpress.org/"><strong>WordPress</strong></a>
+    <div class="clear">Copyright &copy; <a href="<?php bloginfo('home'); ?>"><strong><?php bloginfo('name'); ?></strong></a>  - <?php bloginfo('description'); ?>Powered <a href="http://mymusicstore.com.ph/"><strong>MyMusicStore.com.ph</strong></a></div>
+    <span style="color: #fff; font-size: 10px;">Made with <a href="http://wordpress.org/"><strong>WordPress</strong></a></span>
     </div>
 </div>
 
