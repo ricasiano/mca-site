@@ -40,7 +40,7 @@ if(is_page('80')) { ?>
                             <span class="more-about">more...</span>
                         </a>
                         </div><?php endforeach; ?>
-                     <div class="all-news"><a href="index.php?page_id=78" class="more-btn"></a></div>
+                     <div class="all-news"><a href="index.php?page_id=238" class="more-btn"></a></div>
                      <?php }//endif
 					 	else{
 							?>

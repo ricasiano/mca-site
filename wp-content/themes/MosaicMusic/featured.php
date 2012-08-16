@@ -39,7 +39,7 @@ if(get_theme_option('featured_posts') != '') {
 					  ?>
 			         <div class="featured-post-slides-items">
                         <div class="featured-post-thumbnail">
-                 			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="open">	<?php echo  $slide_image_full; ?>
+                 			<a href="http://www.mymusicstore.com.ph/songs-topsong.html" title="<?php the_title(); ?>" class="open">	<?php echo  $slide_image_full; ?>
 						</a> 
 						</div>                       
                          <div class="featured-post-content-wrap">

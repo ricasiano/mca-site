@@ -1546,3 +1546,21 @@ a.more-btn {
 	display: inline-block;
 	background:url(images/icon_playlist.png) -23px 0 no-repeat;
 	}
+	
+.filter-agent {
+	padding: 10px 0 20px 0;
+	text-align: center;
+	}
+	
+.filter-agent a {
+	color:#999999;
+	text-decoration: none;
+	font-size: 12px;
+	padding: 0 5px;
+	font-weight: bold;
+	}
+	
+.filter-agent a:hover, .filter-agent a:active {
+	color: #999;
+	background: #fff;
+	}
