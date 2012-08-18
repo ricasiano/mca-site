@@ -11,7 +11,7 @@ class Database {
     /***
         initialize db connection
     **/
-    private function connect() {
+    public function connect() {
         mysql_connect($this->host, $this->username, $this->password) or die('DB Connection error');
         mysql_select_db($this->database_name) or die('Invalid database selected');
     }

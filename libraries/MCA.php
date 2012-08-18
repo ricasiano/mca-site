@@ -34,4 +34,29 @@ class MCA extends APIRequest {
         $string = strtolower($string);
         return $string;
     }
+    function paginator($total, $pagenumber, $limit, $link, $prefix_string, $labelprevious = '<< previous ', $labelnext = 'next >>', $separator = '||') {
+        $previous = $pagenumber - 1;
+        $previous = ($previous == 0) ? null : $previous;
+        $next = $pagenumber + 1;
+        $nextpage = $limit * $pagenumber;
+        if ($total <= $nextpage)
+        $next = null;
+        $pagination = '';
+        $prevlink = '';
+        $nextlink = '';
+        if ($previous != null){
+            $prevlink = '<a href="'.$link.'&pagenumber='.$previous.'&prefix_string='.$prefix_string.'">'.$labelprevious.'</a>';
+        }
+        else {
+            $prevlink = $labelprevious;
+        }
+        if ($next != null){
+            $nextlink = '<a href="'.$link.'&pagenumber='.$next.'&prefix_string='.$prefix_string.'">'.$labelnext.'</a>';
+        }
+        else {
+            $nextlink = $labelnext;
+        }
+        $pagination = $prevlink.' '.$separator.' '.$nextlink;
+        return $pagination;
+    }
 }
