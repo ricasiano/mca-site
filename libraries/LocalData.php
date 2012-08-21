@@ -9,6 +9,8 @@ class LocalData extends Database {
         $this->loc_new_singles = '';
         $this->loc_new_releases = '';
         $this->loc_top_albums = '';
+        $this->loc_opm_new_releases = '';
+        $this->loc_opm_hot = '';
         $this->get_settings();
     }
 
@@ -22,6 +24,8 @@ class LocalData extends Database {
         $this->loc_new_singles = $result[0]['new_singles'];
         $this->loc_new_releases = $result[0]['new_releases'];
         $this->loc_top_albums = $result[0]['top_albums'];
+        $this->loc_opm_new_releases = $result[0]['opm_new_releases'];
+        $this->loc_opm_hot = $result[0]['opm_hot'];
     }
 
     //get local active data, provide the table and field to collide to

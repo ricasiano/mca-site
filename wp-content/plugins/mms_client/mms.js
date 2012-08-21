@@ -45,16 +45,15 @@ function rbt_save_data(table, id) {
     }, 'json');
 }
 
-
-
-
 function show_album(artist_id) {
     $('.album_container').hide();
+    $('#album_container_'+artist_id).show();
+    $('#album_container_'+artist_id).html('<img src="'+mms_plugin_directory+'images/ajax-loader.gif" />');
     $.post(mms_site_url+'libraries/cms_api.php', {
         artist_id: artist_id
     },
     function(data) {
-        if(data.albums) {
+        if(data.albums != 'undefined') {
             var albumtable = '<table class="mms_album_table" cellpadding="3" cellspacing="0">';
             for (album_id in data.albums) {
                 albumtable += album_builder(album_id, data.albums[album_id].album_title);
@@ -70,7 +69,10 @@ function show_album(artist_id) {
             }
             albumtable += '</table>';
             $('#album_container_'+artist_id).html(albumtable);
-            $('#album_container_'+artist_id).fadeIn('slow');
+        }
+        else {
+            var albumtable = 'No data found.';
+            $('#album_container_'+artist_id).html(albumtable);
         }
     }, 'json');
 }
@@ -145,8 +147,13 @@ function album_builder(album_id, album_title) {
     }, 'json');
     jQuery.ajaxSetup({async:true});
     albumtable += '<tr><td class="mms_album_td" align="center">Album: <b> '+album_title+'</b></td>';
-    albumtable += '<td class="mms_album_td" align="center">Add to New Releases: <input onclick="toggle_checkbox(\'loc_album\', \''+album_id+'\', \'new_release\', \'album_new_release\')" class="mms_checkbox" '+new_release+' type="checkbox" name="album_new_release_'+album_id+'" id="album_new_release_'+album_id+'"></td>';
-    albumtable += '<td class="mms_album_td" align="center">Add to Top Albums: <input onclick="toggle_checkbox(\'loc_album\', \''+album_id+'\', \'top_album\', \'top_album\')" class="mms_checkbox" '+top_album+' type="checkbox" name="top_album_'+album_id+'" id="top_album_'+album_id+'"></td></tr>';
+    albumtable += '<td class="mms_album_td" align="center">New Release: <input onclick="toggle_checkbox(\'loc_album\', \''+album_id+'\', \'new_release\', \'album_new_release\')" class="mms_checkbox" '+new_release+' type="checkbox" name="album_new_release_'+album_id+'" id="album_new_release_'+album_id+'">';
+    albumtable += '&nbsp;&nbsp;&nbsp;Top Album: <input onclick="toggle_checkbox(\'loc_album\', \''+album_id+'\', \'top_album\', \'top_album\')" class="mms_checkbox" '+top_album+' type="checkbox" name="top_album_'+album_id+'" id="top_album_'+album_id+'"></td>';
+    
+    albumtable += '<td class="mms_album_td" align="center">OPM New Release: <input onclick="toggle_checkbox(\'loc_album\', \''+album_id+'\', \'opm_new_release\', \'opm_new_release\')" class="mms_checkbox" '+top_album+' type="checkbox" name="opm_new_release_'+album_id+'" id="opm_new_release_'+album_id+'">';
+
+    albumtable += '&nbsp;&nbsp;&nbsp;OPM Hot: <input onclick="toggle_checkbox(\'loc_album\', \''+album_id+'\', \'hot\', \'hot\')" class="mms_checkbox" '+top_album+' type="checkbox" name="hot_'+album_id+'" id="hot_'+album_id+'"></td></tr>';
+
     return albumtable;
 }
 
