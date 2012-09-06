@@ -1,4 +1,3 @@
-<?php require ('../mainconfig.php'); ?>
 <html>
 <head><title>RBTs</title></head>
     </head>  
@@ -19,7 +18,7 @@
     <?php if ($_GET['rbt_sun'] != ''): ?>
     Text <?php echo $_GET['rbt_sun'];?> to <b>2300</b> for Sun<br />
     <?php endif; ?><br />
-    P0.00 for 0 days
+    P15.00 for 5 days
     </div>
     </body>  
 </html>  
