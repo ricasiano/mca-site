@@ -9,6 +9,7 @@ $db->username = CONFIG_DATABASE_USER;
 $db->password = CONFIG_DATABASE_PASSWORD;
 $db->database_name = CONFIG_DATABASE_NAME;
 if (isset($_POST['request_type'])) {
+    $db->connect();
     $query = sprintf("SELECT count(*) as cnt FROM `%s` WHERE `id` = '%s'",
         mysql_real_escape_string($_POST['table']),
         mysql_real_escape_string($_POST['id'])
@@ -56,6 +57,7 @@ if (isset($_POST['request_type'])) {
     echo json_encode(array('result' => 'Data has been saved.'));
 }
 else if (isset($_GET['request_type'])) {
+    $db->connect();
     $query = sprintf("SELECT  * FROM `%s` WHERE `%s` = '%s'",
         mysql_real_escape_string($_GET['table']),
         mysql_real_escape_string($_GET['field']),

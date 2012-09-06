@@ -24,6 +24,7 @@ class APIRequest {
         $content_md5 = '';
         if ($request_body != '')
         $content_md5 = $this->md5_base64($request_body);
+        date_default_timezone_set('Asia/Manila');
         //the values under the options will be used on signing and building the header
         $options = array(
                 'Date'              => date('r'),

@@ -30,6 +30,7 @@ class LocalData extends Database {
 
     //get local active data, provide the table and field to collide to
     function get_data($table, $field, $getfield = 'id', $fieldvalue = 1) {
+        $this->connect();
         $sql = sprintf("SELECT `%s` FROM `%s` WHERE `%s` = %s",
             mysql_real_escape_string($getfield),
             mysql_real_escape_string($table),
@@ -45,6 +46,7 @@ class LocalData extends Database {
         return $returndata;
     }
     function get_all_data($table, $field, $id) {
+        $this->connect();
         $sql = sprintf("SELECT * FROM `%s` WHERE `%s` = '%s'",
             mysql_real_escape_string($table),
             mysql_real_escape_string($field),
