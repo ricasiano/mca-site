@@ -34,6 +34,7 @@ $(document).ready(function(){
 <form method="POST" action="options-general.php?page=mms_settings">
 <?php
 if(isset($_POST['submit'])) {
+    $db->connect();
     $query = sprintf("UPDATE `loc_settings` SET `new_releases` = '%s', `top_albums` = '%s', `top_downloads` = '%s', `new_singles` = '%s'
     , `opm_new_releases` = '%s', `opm_hot` = '%s'",
         mysql_real_escape_string($_POST['new_releases']),

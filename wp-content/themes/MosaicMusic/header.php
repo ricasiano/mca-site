@@ -18,7 +18,7 @@
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 <link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>
+<script src="<?php echo includes_url();?>js/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script src="<?php echo includes_url();?>js/jquery.colorbox-min.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_directory'); ?>/js/jquery.cycle.all.js" type="text/javascript"></script>
 <!-- <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/menu/superfish.js"></script>

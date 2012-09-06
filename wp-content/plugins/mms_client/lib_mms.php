@@ -59,6 +59,7 @@ class Lib_MMS extends Database{
 
     //artist biography field
     function display_bio($table, $id, $val) {
+        $this->connect();
         $query = sprintf("SELECT count(*) as cnt, bio FROM `%s` WHERE `id` = '%s'",
             mysql_real_escape_string($table),
             mysql_real_escape_string($id)
